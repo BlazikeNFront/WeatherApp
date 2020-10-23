@@ -4,20 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href="/style/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet">
     <title>WeatherApp</title>
 </head>
 <body>
-    <header>
-        <h1>Weather Checker</h1>
-    </header>
+    <div class="container">
+      <header>
+         <h1>Weather Checker</h1>
+      </header>
 
-    <main>
-        <div class="container">
+      <main>
+        <div class="weatherInfo">
+            <div class="weatheInfo__inputBox hidden" data-jsLink='inputView'>
+              <label class='weatherInfo__label' for='cityInput'>Type your city</label>
+              <input class='weatherInfo__input' id='cityInput' data-jsLink='input'>
+            </div>
+        </h2>
+        <div class="weartherInfo__modal" data-jsLink='modalView'>
+            <div class="weartherInfo__modal__mainInfo">
+                <p class="weartherInfo__modal__temperature" data-jsLink='mainInfoTemperature'>21C</p>
+                <img class="weartherInfo__modal__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
+            </div>
+            <div class="weartherInfo__modal__additionalInfomations">
+                <div class="weartherInfo__modal__additionalInfomations weartherInfo__modal__additionalInfomations__humidity">
+                    <img src='#' alt='humidity Icon' data-jsLink='additionalInfoIcon1'>
+                    <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoHumidity'>53%</p>
+                </div>
+                <div class="weartherInfo__modal__additionalInfomations weartherInfo__modal__additionalInfomations__feelLike">
+                    <img src='#' alt='humidity Icon'>
+                    <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoFeellike'>21C</p>
+                </div>
+                <div class="weartherInfo__modal__additionalInfomations weartherInfo__modal__additionalInfomations__wind">
+                    <img src='#' alt='humidity Icon'>
+                    <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoWind'>2m/s</p>
+                </div>
+            </div>
+            <div class="weartherInfo__modal__dailyForecast">
+                <div class="weartherInfo__modal__dailyForecast__day">
+                    <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
+                        <img src='#' alt='Weather Icon'>
+                        <p class="weartherInfo__modal__dailyForecast__day__text">wednesday</p>
+                    </div>
+                    <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
+                </div>
+                <div class="weartherInfo__modal__dailyForecast__day">
+                    <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
+                        <img src='#' alt='Weather Icon'>
+                        <p class="weartherInfo__modal__dailyForecast__day__text">wednesday</p>
+                    </div>
+                    <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
+                </div>
+                <div class="weartherInfo__modal__dailyForecast__day">
+                    <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
+                        <img src='#' alt='Weather Icon'>
+                        <p class="weartherInfo__modal__dailyForecast__day__text">wednesday</p>
+                    </div>
+                    <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
+                </div>
+            </div>
 
+            <button class="weartherInfo__modal__button"> Check in another city ! </button>
         </div>
-
-    </main>
-
+      </main>
+    </div>
 
     <script src='src/app.js' type='module' defer></script>
 </body>

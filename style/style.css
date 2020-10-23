@@ -1,3 +1,10 @@
+:root {
+    --main-font:'Rubik', sans-serif;
+
+}
+
+
+
 *,
 *::after,
 *::before {
@@ -10,6 +17,98 @@ html {
     font-size: 62.5%;
 }
 
+.container {
+    margin:1rem auto 0rem auto;
+    width: 90%;
+}
+
 h1 {
     font-size: 3rem;
+    font-family: var(--main-font);
+    text-align: center;
+}
+
+main {
+   height:40rem;
+   display:flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+
+.weatherInfo {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.weatheInfo__inputBox {
+  
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.weatherInfo__label {
+    margin-bottom:1.5rem;
+    font-size:2rem;
+    font-family: var(--main-font);
+    
+}
+.weatherInfo__input {
+    padding: 1rem 3rem;
+    border:3px solid black;
+    border-radius: 1rem;
+    font-family: var(--main-font);
+    font-size:1.5rem;
+    text-align:center;
+}
+
+.weartherInfo__modal__mainInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.weartherInfo__modal__additionalInfomations {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.weartherInfo__modal__dailyForecast {
+    display:flex;
+    flex-direction: column;
+    align-items: space-around;
+}
+
+.weartherInfo__modal__dailyForecast {
+    margin-top:2rem;
+}
+
+.weartherInfo__modal__dailyForecast__day{
+    display:flex;
+    justify-content: space-between;
+}
+
+.weartherInfo__modal__dailyForecast__day__iconAndDay{
+    display:flex;
+    justify-content: space-between;
+}
+
+.weartherInfo__modal__button {
+    
+    margin-top:2rem;
+    margin-left: 50%;
+    width:18rem;
+    padding: 1rem 0;
+    transform: translate(-50%);
+    border:3px solid black;
+    border-radius: 1rem;
+
+}
+.hidden { 
+    display:none;
 }
