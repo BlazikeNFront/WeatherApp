@@ -15,26 +15,29 @@
 
       <main>
         <div class="weatherInfo">
-            <div class="weatheInfo__inputBox hidden" data-jsLink='inputView'>
-              <label class='weatherInfo__label' for='cityInput'>Type your city</label>
-              <input class='weatherInfo__input' id='cityInput' data-jsLink='input'>
-            </div>
+           
+                <form class="weatheInfo__inputBox" data-jsLink='inputView'>
+                    <label class='weatherInfo__label' for='cityInput'>Type your city</label>
+                    <input class='weatherInfo__input' id='cityInput' data-jsLink='input' >
+                    <button class='weatherInfo__button' data-jsLink='buttonSubmit' type='submit'>Check Weather ! </button>
+                </form>
+            
         </h2>
-        <div class="weartherInfo__modal" data-jsLink='modalView'>
+        <div class="weartherInfo__modal hidden" data-jsLink='modalView'>
             <div class="weartherInfo__modal__mainInfo">
                 <p class="weartherInfo__modal__temperature" data-jsLink='mainInfoTemperature'>21C</p>
                 <img class="weartherInfo__modal__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
             </div>
             <div class="weartherInfo__modal__additionalInfomations">
-                <div class="weartherInfo__modal__additionalInfomations weartherInfo__modal__additionalInfomations__humidity">
+                <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__humidity">
                     <img src='#' alt='humidity Icon' data-jsLink='additionalInfoIcon1'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoHumidity'>53%</p>
                 </div>
-                <div class="weartherInfo__modal__additionalInfomations weartherInfo__modal__additionalInfomations__feelLike">
+                <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__feelLike">
                     <img src='#' alt='humidity Icon'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoFeellike'>21C</p>
                 </div>
-                <div class="weartherInfo__modal__additionalInfomations weartherInfo__modal__additionalInfomations__wind">
+                <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__wind">
                     <img src='#' alt='humidity Icon'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoWind'>2m/s</p>
                 </div>
@@ -63,7 +66,7 @@
                 </div>
             </div>
 
-            <button class="weartherInfo__modal__button"> Check in another city ! </button>
+            <button class="weartherInfo__modal__button" data-jsLink="backToSearchViewButton"> Check in another city ! </button>
         </div>
       </main>
     </div>

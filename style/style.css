@@ -37,14 +37,15 @@ main {
 }
 
 .weatherInfo {
-    display:flex;
+    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 50%;
 }
 
+
 .weatheInfo__inputBox {
-  
     display:flex;
     flex-direction: column;
     align-items: center;
@@ -62,8 +63,23 @@ main {
     border:3px solid black;
     border-radius: 1rem;
     font-family: var(--main-font);
-    font-size:1.5rem;
+    font-size:2.5rem;
     text-align:center;
+}
+
+.weatherInfo__button {
+    margin-top:1rem;
+    padding:1rem 0.5rem;
+    border:2px solid black;
+    border-radius: 0.4rem;
+    background-color: transparent;
+    font-family: var(--main-font);
+    font-size:2rem;
+
+}
+
+.weartherInfo__modal{
+width: 80%;
 }
 
 .weartherInfo__modal__mainInfo {
@@ -73,6 +89,7 @@ main {
 }
 
 .weartherInfo__modal__additionalInfomations {
+    
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -96,10 +113,14 @@ main {
 .weartherInfo__modal__dailyForecast__day__iconAndDay{
     display:flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.weartherInfo__modal__additionalInfomations__box {
+    text-align: center;
 }
 
 .weartherInfo__modal__button {
-    
     margin-top:2rem;
     margin-left: 50%;
     width:18rem;
@@ -107,6 +128,7 @@ main {
     transform: translate(-50%);
     border:3px solid black;
     border-radius: 1rem;
+    background:transparent;
 
 }
 .hidden { 
