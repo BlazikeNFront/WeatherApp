@@ -27,22 +27,24 @@
             <div class="weartherInfo__modal__mainInfo">
                 <p class="weartherInfo__modal__temperature" data-jsLink='mainInfoTemperature'>21C</p>
                 <img class="weartherInfo__modal__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
+                <p class="weartherInfo__modal__iconText" data-jsLink='weatherIconText'>21C</p>
             </div>
             <div class="weartherInfo__modal__additionalInfomations">
                 <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__humidity">
-                    <img src='#' alt='humidity Icon' data-jsLink='additionalInfoIcon1'>
+                    <img src='icons\drop.svg' alt='humidity Icon' data-jsLink='additionalInfoIcon1'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoHumidity'>53%</p>
                 </div>
                 <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__feelLike">
-                    <img src='#' alt='humidity Icon'>
+                    <img src='icons\hot.svg' alt='Feels Like Temperature Icon'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoFeellike'>21C</p>
                 </div>
                 <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__wind">
-                    <img src='#' alt='humidity Icon'>
+                    <img src='icons\wind.svg' alt='Wind Icon'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoWind'>2m/s</p>
                 </div>
             </div>
-            <div class="weartherInfo__modal__dailyForecast">
+            <button class="weartherInfo__modal__forecastButton" data-jsLink="getForecastButton"> Get forecast for 3 days ! </button>
+            <div class="weartherInfo__modal__dailyForecast hidden" data-jsLink="dailyForecastModule">
                 <div class="weartherInfo__modal__dailyForecast__day">
                     <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
                         <img src='#' alt='Weather Icon'>

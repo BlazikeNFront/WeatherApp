@@ -94,6 +94,9 @@ width: 80%;
     justify-content: space-between;
     align-items: center;
 }
+.weartherInfo__modal__additionalInfomations__box__feelLike img {
+    width: 12%;
+}
 
 .weartherInfo__modal__dailyForecast {
     display:flex;
@@ -114,6 +117,19 @@ width: 80%;
     display:flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.weartherInfo__modal__forecastButton {
+    
+    margin-top:2rem;
+    margin-left: 50%;
+    width:18rem;
+    padding: 1rem 0;
+    transform: translate(-50%);
+    border:3px solid black;
+    border-radius: 1rem;
+    background:transparent;
+
 }
 
 .weartherInfo__modal__additionalInfomations__box {
