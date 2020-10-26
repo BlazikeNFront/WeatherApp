@@ -18,9 +18,9 @@ export class Common {
         return document.querySelector(`[data-jsLink=${dataAttributeValue}]`);
       }
 
-      changeVisibility(element,value){
+      changeVisibility(element){
         
-       if(value) {
+       if(getComputedStyle(element).display ==='none') {
         element.classList.remove('hidden')
         }
          else {
