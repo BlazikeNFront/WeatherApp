@@ -25,26 +25,33 @@
         </h2>
         <div class="weartherInfo__modal hidden" data-jsLink='modalView'>
             <div class="weartherInfo__modal__mainInfo">
+                <h3 data-jsLink='cityName'></h3>
                 <p class="weartherInfo__modal__temperature" data-jsLink='mainInfoTemperature'>21C</p>
                 <img class="weartherInfo__modal__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
                 <p class="weartherInfo__modal__iconText" data-jsLink='weatherIconText'>21C</p>
             </div>
+
             <div class="weartherInfo__modal__additionalInfomations">
+
                 <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__humidity">
                     <img src='icons\drop.svg' alt='humidity Icon' data-jsLink='additionalInfoIcon1'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoHumidity'>53%</p>
                 </div>
+
                 <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__feelLike">
                     <img src='icons\hot.svg' alt='Feels Like Temperature Icon'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoFeellike'>21C</p>
                 </div>
+
                 <div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__wind">
                     <img src='icons\wind.svg' alt='Wind Icon'>
                     <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoWind'>2m/s</p>
                 </div>
+
             </div>
             <button class="weartherInfo__modal__forecastButton" data-jsLink="getForecastButton"> Get forecast for 3 days ! </button>
             <div class="weartherInfo__modal__dailyForecast hidden" data-jsLink="dailyForecastModule">
+
                 <div class="weartherInfo__modal__dailyForecast__day">
                     <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
                         <img src='#' alt='Weather Icon'>
@@ -52,6 +59,7 @@
                     </div>
                     <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
                 </div>
+
                 <div class="weartherInfo__modal__dailyForecast__day">
                     <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
                         <img src='#' alt='Weather Icon'>
@@ -59,6 +67,7 @@
                     </div>
                     <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
                 </div>
+
                 <div class="weartherInfo__modal__dailyForecast__day">
                     <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
                         <img src='#' alt='Weather Icon'>
@@ -66,6 +75,7 @@
                     </div>
                     <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
                 </div>
+                
             </div>
 
             <button class="weartherInfo__modal__button" data-jsLink="backToSearchViewButton"> Check in another city ! </button>
