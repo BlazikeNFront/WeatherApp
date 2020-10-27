@@ -10,6 +10,7 @@ class WeatherApp extends Common{
         new InputQuery(this.domElements['buttonSubmit']);
         new BackButton(this.domElements['backToSearchViewButton'],this.domElements['modalView'],this.domElements['inputView']);
         new ForecastButton(this.domElements['getForecastButton']);
+      
        
     }
 }
