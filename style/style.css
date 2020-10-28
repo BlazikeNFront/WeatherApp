@@ -1,6 +1,6 @@
 :root {
     --main-font:'Rubik', sans-serif;
-
+    
 }
 
 
@@ -19,7 +19,7 @@ html {
 }
 
 .container {
-    margin:1rem auto 0rem auto;
+    margin:2rem auto 0rem auto;
     width: 90%;
 }
 
@@ -79,8 +79,8 @@ main {
 
 }
 
-.weartherInfo__modal{
-width: 80%;
+.weartherInfo__modal {
+width: 90%;
 }
 
 .weartherInfo__modal__mainInfo {
@@ -112,12 +112,14 @@ width: 80%;
 .weartherInfo__modal__dailyForecast__day{
     display:flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .weartherInfo__modal__dailyForecast__day__iconAndDay{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    flex-basis: 29%;
 }
 
 .weartherInfo__modal__forecastButton {
@@ -131,6 +133,19 @@ width: 80%;
     border-radius: 1rem;
     background:transparent;
 
+}
+.weartherInfo__modal__dailyForecast__day__temperatureChart {
+    display:flex;
+    align-items: baseline;
+    justify-content: space-around;
+    flex-grow:2;
+    font-size: 0.2rem;
+    text-align: center;
+}
+
+.weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
+    border:1px solid blue;
+    width:1rem;
 }
 
 .weartherInfo__modal__additionalInfomations__box {
