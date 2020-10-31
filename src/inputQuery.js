@@ -1,4 +1,6 @@
 import { Common } from '/src/Common.js';
+import { APICall } from '/src/APICall.js';
+
 
 export class InputQuery extends Common {
             constructor(input){
@@ -12,7 +14,14 @@ export class InputQuery extends Common {
                 element.addEventListener('click' ,(e)=> {
                  
                     e.preventDefault();
-                    fetch(`http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${e.path[1][0].value}`)
+                    new APICall(e.path[1][0], 'current')
+
+
+
+
+
+
+                    /*fetch(`http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${e.path[1][0].value}`)
                     .then(data=> { return data.json()})
                     .then(data=> { 
                         e.path[1][0].value = '';
@@ -40,7 +49,7 @@ export class InputQuery extends Common {
                         this.domElements['inputErrorMsg'].textContent = 'Wrong city!' ;
 
                         
-                    });
+                    });*/
                     
                     
                     
