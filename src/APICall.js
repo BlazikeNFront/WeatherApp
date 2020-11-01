@@ -38,14 +38,14 @@ export class APICall extends Common {
             .then(data => data.json())
             .then(data => {
                
-              
+              console.log(data['forecast']['forecastday'])
                 Array.from(document.querySelectorAll('.weartherInfo__modal__dailyForecast__day')).map((element, index) => {
                     const arrayFromLink = data['forecast']['forecastday'][index]['day']['condition']['icon'].split('');
                     const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
                     
                   element.children[0]['children'][1].textContent = this.daysOfWeek[Math.floor((data['forecast']['forecastday'][index]['date_epoch']/86400)+4)%7];
                   element.children[0]['children'][0].src = `icons/day/${iconNumber}.png`;
-                  element.children[2].textContent = `${data['forecast']['forecastday'][index]['day']['avgtemp_c']}°C`;
+                  element.children[2].textContent = `Average temperature ${data['forecast']['forecastday'][index]['day']['avgtemp_c']}°C`;
                   
                 })
 
@@ -60,7 +60,7 @@ export class APICall extends Common {
 
                         chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
                         chart.style.height = `${data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']/3}rem`;
-                        text.textContent = `${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']/3).toFixed(1)}°C`;
+                        text.textContent = `${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']).toFixed(1)}°C`;
 
                         box.appendChild(chart);
                         box.appendChild(text);
