@@ -176,7 +176,7 @@ width: 90%;
 }
 
 .weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
-    background-color: blue;
+    background-color:orange;
     width:1rem;
     margin: 0 0.5rem;
 }
@@ -187,14 +187,24 @@ width: 90%;
 
 .weartherInfo__modal__button {
     margin-top:2rem;
-   
     width:18rem;
     padding: 1rem 0;
     
     border:3px solid black;
     border-radius: 1rem;
     background:transparent;
+}
 
+.footer__container {
+    position: absolute;
+    top:93vh;
+    margin-left: 50%;
+    transform: translate(-50%);
+    display:flex;
+    align-items: center;
+}
+footer p {
+    margin-right: 1rem;
 }
 .hidden { 
     display:none;

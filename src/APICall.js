@@ -37,8 +37,8 @@ export class APICall extends Common {
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=4`)
             .then(data => data.json())
             .then(data => {
-               
-              console.log(data['forecast']['forecastday'])
+              
+              
                 Array.from(document.querySelectorAll('.weartherInfo__modal__dailyForecast__day')).map((element, index) => {
                     const arrayFromLink = data['forecast']['forecastday'][index]['day']['condition']['icon'].split('');
                     const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
@@ -59,7 +59,20 @@ export class APICall extends Common {
                         const text = document.createElement('p');
 
                         chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
-                        chart.style.height = `${data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']/3}rem`;
+
+                        let temperatureChartHeight = data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c'] ;
+
+                        if(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']<0){
+                            temperatureChartHeight = Math.abs(temperatureChartHeight)
+                            chart.style.transform = `translate(0,${temperatureChartHeight/3}rem`;
+                            text.style.transform = `translate(0,${temperatureChartHeight/3}rem`;
+                            chart.style.backgroundColor = 'blue'
+                        }
+
+
+                        chart.style.height = `${temperatureChartHeight/3}rem`;
+
+                        
                         text.textContent = `${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']).toFixed(1)}°C`;
 
                         box.appendChild(chart);
