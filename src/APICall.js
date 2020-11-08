@@ -34,10 +34,10 @@ export class APICall extends Common {
 
 
     forecastCAll(inputValue){
-        fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=4`)
+        fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
             .then(data => data.json())
             .then(data => {
-              
+              console.log(data)
               
                 Array.from(document.querySelectorAll('.weartherInfo__modal__dailyForecast__day')).map((element, index) => {
                     const arrayFromLink = data['forecast']['forecastday'][index]['day']['condition']['icon'].split('');
@@ -46,7 +46,11 @@ export class APICall extends Common {
                   element.children[0]['children'][1].textContent = this.daysOfWeek[Math.floor((data['forecast']['forecastday'][index]['date_epoch']/86400)+4)%7];
                   element.children[0]['children'][0].src = `icons/day/${iconNumber}.png`;
                   element.children[2].textContent = `Average temperature ${data['forecast']['forecastday'][index]['day']['avgtemp_c']}°C`;
-                  
+                    
+                  if(data['forecast']['forecastday'][index]['day']['avgtemp_c'] <-3){
+                    element.children[1].style.transform='translate(0, -2rem)';
+                  }
+                 
                 })
 
                 Array.from(document.querySelectorAll('.weartherInfo__modal__dailyForecast__day__temperatureChart')).map((element,index) => {
@@ -57,6 +61,9 @@ export class APICall extends Common {
                         const box = document.createElement('div');
                         const chart = document.createElement('div');
                         const text = document.createElement('p');
+                        const hourText = document.createElement('p');
+                        
+                        hourText.style.transform = `rotate(-90deg) translate(-${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c'])/2}rem,0)`
 
                         chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
 
@@ -64,19 +71,30 @@ export class APICall extends Common {
 
                         if(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']<0){
                             temperatureChartHeight = Math.abs(temperatureChartHeight)
-                            chart.style.transform = `translate(0,${temperatureChartHeight/3}rem`;
-                            text.style.transform = `translate(0,${temperatureChartHeight/3}rem`;
-                            chart.style.backgroundColor = 'blue'
+                            chart.style.transform = `translate(0,${temperatureChartHeight/2}rem`;
+                            text.style.transform = `translate(0,${temperatureChartHeight/2}rem`;
+                            chart.style.backgroundColor = 'blue';
+                            hourText.style.transform = ' rotate(-90deg) translate(2.3rem, 0)';
                         }
+                       
 
 
-                        chart.style.height = `${temperatureChartHeight/3}rem`;
+                        chart.style.height = `${temperatureChartHeight/2}rem`;
 
                         
                         text.textContent = `${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']).toFixed(1)}°C`;
+                        
+                        hourText.textContent = `${hourindex}:00`;
+                        hourText.classList.add('weartherInfo__modal__additionalInfomations__box__hourInfo')
 
+                        
+                        
+                        text.classList.add('weartherInfo__modal__additionalInfomations__box__tempInfo');
+                        chart.appendChild(text);
+                        chart.appendChild(hourText);
                         box.appendChild(chart);
-                        box.appendChild(text);
+                        
+                        
                         element.appendChild(box);
 
                     })
@@ -152,7 +170,7 @@ export class APICall extends Common {
             ,
 
             (error)=> {
-                 this.domElements['inputErrorMsg'].textContent = 'Cannot get access to geoloaction...';
+                 this.domElements['inputErrorMsg'].textContent = 'Cannot get access to geoloaction module...';
             })
         })}
     
