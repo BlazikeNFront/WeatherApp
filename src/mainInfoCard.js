@@ -3,13 +3,23 @@ import { Common } from '/src/Common.js';
 
 
 export class MainInfoCard extends Common {
-    constructor(DOMParent,infoType,iconSrc,value){
+    constructor(DOMParent,infoType,iconSrc,value,additionalInfo){
         super();
         this.infoType =  infoType;
         this.iconSrc = iconSrc;
         this.value = value ;
-        this.humidity(DOMParent);
+        this.additionalInfo = additionalInfo;
+        
+        switch(this.infoType){
+            case 'humidity':this.humidity(DOMParent);
+            break;
+            case 'feelLike':this.feelLikeTemperature(DOMParent);
+            break;
+            case 'wind':this.wind(DOMParent);
+            break;
 
+        }
+       
     }
 
 
@@ -23,7 +33,7 @@ export class MainInfoCard extends Common {
 
         const p = document.createElement('p');
         p.classList.add('weartherInfo__modal__additionalInfomations__text');
-        p.textContent = this.value;
+        p.textContent = `Humidity: ${this.value}`;
 
         div.appendChild(icon);
         div.appendChild(p);
@@ -32,16 +42,75 @@ export class MainInfoCard extends Common {
         
     }
 
-    feelLikeTemperature(){
+    feelLikeTemperature(domParent){
+        const div = document.createElement('div');
+        div.classList.add('weartherInfo__modal__additionalInfomations__box');
+        div.classList.add('weartherInfo__modal__additionalInfomations__box__feelLike');
+        const icon = document.createElement('img');
+        icon.src = this.iconSrc;
+        icon.alt = 'feel like icon';
 
+        const p = document.createElement('p');
+        p.classList.add('weartherInfo__modal__additionalInfomations__text');
+        p.textContent = `Feel like: ${this.value}`;
+
+        div.appendChild(icon);
+        div.appendChild(p);
+
+        domParent.appendChild(div);
     }
 
-    wind(){
+    wind(domParent){
 
+        const div = document.createElement('div');
+        div.classList.add('weartherInfo__modal__additionalInfomations__box');
+        div.classList.add('weartherInfo__modal__additionalInfomations__box__wind');
+        const icon = document.createElement('img');
+        icon.src = this.iconSrc;
+        icon.alt = 'Wind Icon';
+
+        const p = document.createElement('p');
+        p.classList.add('weartherInfo__modal__additionalInfomations__text');
+        p.textContent =`${this.value}`;
+
+
+
+        let windDirectionShortCut = this.additionalInfo['windDirection'];
+      // API gives wind direction as 16 point compass. e.g.: NSW - code below translates it into maxiumim 8 point;
+        if(windDirectionShortCut.length === 3){
+            const array =windDirectionShortCut.split('');
+            if(array[0] === 'N' || array[0] === 'S'){
+                array.splice(array[1],1);
+                windDirectionShortCut = array.join('') ;
+            }
+            else {
+                array.splice(array[0],1);
+                windDirectionShortCut = array.join('') ;
+            }
+        }
+
+
+        const windDirectionFull = {
+            'S': 'South',
+            'N': 'North',
+            'W': 'West',
+            'NE': 'North-East',
+            'NW': 'North-West',
+            'SE': 'South-East',
+            'SW': 'South-West',
+          
+        }
+
+        const windDirection = windDirectionFull[`${windDirectionShortCut}`]
+        const additionInfo = document.createElement('p');
+        p.classList.add('weartherInfo__modal__additionalInfomations__text');
+        p.textContent =` Wind direction: ${windDirection}`;
+        
+
+        div.appendChild(icon);
+        div.appendChild(p);
+
+        domParent.appendChild(div);
     }
 }
 
-/*<div class="weartherInfo__modal__additionalInfomations__box weartherInfo__modal__additionalInfomations__box__humidity">
-                    <img src='icons\drop.svg' alt='humidity Icon' data-jsLink='additionalInfoIcon1'>
-                    <p class='weartherInfo__modal__additionalInfomations__text' data-jsLink='additionalInfoHumidity'>53%</p>
- </div>*/

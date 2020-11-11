@@ -113,9 +113,11 @@ export class APICall extends Common {
     }
 
     currentWeatherCall(input){
+        this.domElements['additionalInformationBox'].innerHTML = '';
         fetch(`http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${input.value}`)
         .then(data=> { return data.json()})
         .then(data=> { 
+            
             input.value = '';
             const arrayFromLink = data['current']['condition']['icon'].split('');
             const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
@@ -133,13 +135,12 @@ export class APICall extends Common {
             
 
 
-
+           
             new MainInfoCard(this.domElements['additionalInformationBox'],'humidity','icons/drop.svg',`${data['current']['humidity']}%`);
-           // new MainInfoCard(this.domElements['additionalInformationBox'],'feelLike','icons/drop.svg',`${data['current']['humidity']}%`);
-           // new MainInfoCard(this.domElements['additionalInformationBox'],'humidity','icons/drop.svg',`${data['current']['humidity']}%`);
-            /*this.domElements['additionalInfoHumidity'].textContent = `${data['current']['humidity']}%`;
-            this.domElements['additionalInfoFeellike'].textContent = `${data['current']['feelslike_c']}°C`;
-            this.domElements['additionalInfoWind'].textContent = `${data['current']['wind_kph']}km/h`;*/
+            new MainInfoCard(this.domElements['additionalInformationBox'],'feelLike','icons/hot.svg',`${data['current']['feelslike_c']}°C`);
+            new MainInfoCard(this.domElements['additionalInformationBox'],'wind','icons/wind.svg',`${data['current']['wind_kph']}km/h`,{windDirection:data['current']['wind_dir']});
+        
+           
 
 
 
@@ -161,7 +162,7 @@ export class APICall extends Common {
         navigator.geolocation.getCurrentPosition((coordinates)=> {
             const latitude  = coordinates.coords.latitude;
             const longitude = coordinates.coords.longitude;
-           
+            this.domElements['additionalInformationBox'].innerHTML = '';
           
             fetch(`http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${latitude+','+longitude}`)
             .then(data=> { return data.json()})
@@ -177,13 +178,27 @@ export class APICall extends Common {
                 
                 }  
                 
-                this.domElements['cityName'].textContent = data['location']['name'];
+               /* this.domElements['cityName'].textContent = data['location']['name'];
                 this.domElements['weatherIconText'].textContent = data['current']['condition']['text'];
                 this.domElements['additionalInfoHumidity'].textContent = `${data['current']['humidity']}%`;
                 this.domElements['additionalInfoFeellike'].textContent = `${data['current']['feelslike_c']}°C`;
                 this.domElements['additionalInfoWind'].textContent = `${data['current']['wind_kph']}km/h`;
                 this.domElements['mainInfoTemperature'].textContent = `${data['current']['temp_c']}°C`;
-                this.domElements['inputErrorMsg'].textContent = '';
+                this.domElements['inputErrorMsg'].textContent = '';*/
+                
+               
+              
+                
+                this.domElements['cityName'].textContent = data['location']['name'];
+                this.domElements['weatherIconText'].textContent = data['current']['condition']['text'];
+                this.domElements['mainInfoTemperature'].textContent = `${data['current']['temp_c']}°C`;
+                
+    
+    
+               
+                new MainInfoCard(this.domElements['additionalInformationBox'],'humidity','icons/drop.svg',`${data['current']['humidity']}%`);
+                new MainInfoCard(this.domElements['additionalInformationBox'],'feelLike','icons/hot.svg',`${data['current']['feelslike_c']}°C`);
+                new MainInfoCard(this.domElements['additionalInformationBox'],'wind','icons/wind.svg',`${data['current']['wind_kph']}km/h`,{windDirection:data['current']['wind_dir']});
                 
                 this.switchView(this.domElements['inputView'],this.domElements['modalView']);
             }
