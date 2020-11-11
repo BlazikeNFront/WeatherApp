@@ -188,6 +188,7 @@ width: 90%;
 
 .weartherInfo__modal__additionalInfomations__box {
     text-align: center;
+    width: 5rem;
 }
 .weartherInfo__modal__additionalInfomations__box__hourInfo {
     transform: rotate(-90deg) ;
