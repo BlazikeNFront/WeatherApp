@@ -76,7 +76,8 @@ export class MainInfoCard extends Common {
 
 
         let windDirectionShortCut = this.additionalInfo['windDirection'];
-      // API gives wind direction as 16 point compass. e.g.: NSW - code below translates it into maxiumim 8 point;
+      // API gives wind direction as 16 point compass. e.g.: NSW - code below translates it into maxiumum 8 point;
+
         if(windDirectionShortCut.length === 3){
             const array =windDirectionShortCut.split('');
             if(array[0] === 'N' || array[0] === 'S'){
