@@ -1,6 +1,6 @@
 import { Common } from '/src/Common.js';
 import { MainInfoCard } from '/src/mainInfoCard.js';
-
+import { DailyForecast } from '/src/dailyForecast.js';
 
 export class APICall extends Common {
     constructor(location,typeOfCall){
@@ -27,20 +27,30 @@ export class APICall extends Common {
             case 'forecast':
                 this.forecastCAll(this.location);
                 break;
-        }
+        };
+        
     
         
     }
 
 
     forecastCAll(inputValue){
+        //Free API users are able to get forcast for maximuim 3 days...
+
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
             .then(data => data.json())
             .then(data => {
-              
+                console.log(data.forecast.forecastday)
+
+
+
+
+
                 
             
                 Array.from(document.querySelectorAll('.weartherInfo__modal__dailyForecast__day')).map((element, index) => {
+
+
                     const arrayFromLink = data['forecast']['forecastday'][index]['day']['condition']['icon'].split('');
                     const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
                     
@@ -109,6 +119,42 @@ export class APICall extends Common {
                     })
                 })
                 this.changeVisibility(this.domElements['dailyForecastModule']);
+
+
+
+
+
+
+                
+                data.forecast.forecastday.map((day,index )=> {
+                    new DailyForecast(this.domElements['testDiv']);
+                  
+
+                   const element = this.domElements['testDiv'].lastChild;
+
+
+               
+                   
+                  const arrayFromLink = day['day']['condition']['icon'].split('');
+                 
+                   
+                    const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
+                    console.log(iconNumber)
+
+                    
+                 // element.children[0]['children'][1].textContent = this.daysOfWeek[Math.floor((data['forecast']['forecastday'][index]['date_epoch']/86400)+4)%7];
+                 // element.children[0]['children'][0].src = `icons/day/${iconNumber}.png`;
+                 // element.children[2].textContent = `Average temperature ${data['forecast']['forecastday'][index]['day']['avgtemp_c']}°C`;
+
+
+                 })
+
+
+
+
+
+
+
             })
     }
 
