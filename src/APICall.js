@@ -40,8 +40,8 @@ export class APICall extends Common {
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
             .then(data => data.json())
             .then(data => {
-                console.log(data.forecast.forecastday)
-
+                
+                this.domElements['dailyForecastModule'].innerHTML = '';
 
 
 
@@ -53,6 +53,7 @@ export class APICall extends Common {
 
                     const arrayFromLink = data['forecast']['forecastday'][index]['day']['condition']['icon'].split('');
                     const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
+                    
                     
                   element.children[0]['children'][1].textContent = this.daysOfWeek[Math.floor((data['forecast']['forecastday'][index]['date_epoch']/86400)+4)%7];
                   element.children[0]['children'][0].src = `icons/day/${iconNumber}.png`;
@@ -118,6 +119,7 @@ export class APICall extends Common {
 
                     })
                 })
+
                 this.changeVisibility(this.domElements['dailyForecastModule']);
 
 
@@ -127,26 +129,9 @@ export class APICall extends Common {
 
                 
                 data.forecast.forecastday.map((day,index )=> {
-                    new DailyForecast(this.domElements['testDiv']);
+                   
+                    new DailyForecast(this.domElements['dailyForecastModule'], day);
                   
-
-                   const element = this.domElements['testDiv'].lastChild;
-
-
-               
-                   
-                  const arrayFromLink = day['day']['condition']['icon'].split('');
-                 
-                   
-                    const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
-                    console.log(iconNumber)
-
-                    
-                 // element.children[0]['children'][1].textContent = this.daysOfWeek[Math.floor((data['forecast']['forecastday'][index]['date_epoch']/86400)+4)%7];
-                 // element.children[0]['children'][0].src = `icons/day/${iconNumber}.png`;
-                 // element.children[2].textContent = `Average temperature ${data['forecast']['forecastday'][index]['day']['avgtemp_c']}°C`;
-
-
                  })
 
 
