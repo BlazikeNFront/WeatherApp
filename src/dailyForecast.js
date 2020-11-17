@@ -43,11 +43,15 @@ import { Common } from '/src/Common.js';
 
         const temperetureChartBox = document.createElement('div');
         temperetureChartBox.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart');
+        const hourInfo = document.createElement('p');
 
         const averageTemperatureText = document.createElement('p');
         averageTemperatureText.classList.add('weartherInfo__modal__dailyForecast__day__temperature');
 
+        hourInfo.textContent = 'HOUR'
+        hourInfo.classList.add('weartherInfo__modal__dailyForecast__day__hourInfo');
         
+        temperetureChartBox.appendChild(hourInfo)
         box.appendChild(iconAndDayBox);
         box.appendChild(temperetureChartBox);
         box.appendChild(averageTemperatureText);
@@ -62,9 +66,14 @@ import { Common } from '/src/Common.js';
         box.children[2].textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
             
     
-         if(this.data['day']['avgtemp_c'] <-3){
-            box.children[1].style.transform='translate(0, -2rem)';
+         if(this.data['day']['avgtemp_c'] <-10){
+             
+            box.children[1].style.transform='translate(0, -7rem)';
           }
+        if(this.data['day']['avgtemp_c'] <-3){
+            
+           box.children[1].style.transform='translate(0, -3.5rem)';
+         }
 
          
 
@@ -75,6 +84,7 @@ import { Common } from '/src/Common.js';
             const chart = document.createElement('div');
             const text = document.createElement('p');
             const hourText = document.createElement('p');
+            
             const chartHeightMulitplier = 2;
            
       
@@ -84,7 +94,9 @@ import { Common } from '/src/Common.js';
             hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/2}rem,0)`
     
             chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
-    
+            
+
+         
            
     
             if(temperatureChartHeight<0){
@@ -95,9 +107,9 @@ import { Common } from '/src/Common.js';
                 hourText.style.transform = ' rotate(-90deg) translate(2.3rem, 0)';
             }
            
-    
-    
-            chart.style.height = `${temperatureChartHeight/chartHeightMulitplier}rem`;
+            chart.style.height = 0;
+            chart.style.transition = '2s'
+            setTimeout(()=> {chart.style.height = `${temperatureChartHeight/chartHeightMulitplier}rem`},100);
     
             
             text.textContent = `${(temperatureChartHeight).toFixed(1)}°C`;

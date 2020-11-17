@@ -7,6 +7,7 @@ export class InputQuery extends Common {
                 super();
                 this.input= input;
                 this.inputEventListener(input);
+                
             }
 
 
