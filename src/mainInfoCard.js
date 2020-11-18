@@ -84,7 +84,7 @@ export class MainInfoCard extends Common {
                 array.splice(array[1],1);
                 windDirectionShortCut = array.join('') ;
             }
-            else {
+            else   {
                 array.splice(array[0],1);
                 windDirectionShortCut = array.join('') ;
             }
@@ -92,6 +92,7 @@ export class MainInfoCard extends Common {
 
 
         const windDirectionFull = {
+            'E':'East',
             'S': 'South',
             'N': 'North',
             'W': 'West',
