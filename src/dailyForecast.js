@@ -49,15 +49,21 @@ import { Common } from '/src/Common.js';
         averageTemperatureText.classList.add('weartherInfo__modal__dailyForecast__day__temperature');
 
         hourInfo.textContent = 'HOUR'
-        hourInfo.classList.add('weartherInfo__modal__dailyForecast__day__hourInfo');
         
+        if(this.data['hour'][0]['temp_c'] >  0){
+            hourInfo.style.transform = 'translate(0,1.5rem)';
+        }
+            else {
+                hourInfo.style.transform = 'translate(0,-0.5rem)';
+            }
+       
         temperetureChartBox.appendChild(hourInfo)
         box.appendChild(iconAndDayBox);
         box.appendChild(temperetureChartBox);
         box.appendChild(averageTemperatureText);
 
 
-
+        
 
        
         
@@ -67,15 +73,18 @@ import { Common } from '/src/Common.js';
             
     
          if(this.data['day']['avgtemp_c'] <-10){
-             
+             console.log(box.children[1])
+            
             box.children[1].style.transform='translate(0, -7rem)';
           }
-        if(this.data['day']['avgtemp_c'] <-3){
+        else if(this.data['day']['avgtemp_c'] <-3){
             
            box.children[1].style.transform='translate(0, -3.5rem)';
          }
 
-         
+       
+        const chartHeightMulitplier = 2;
+
 
           this.data['hour'].map((hour,hourindex) => {
         
@@ -84,14 +93,18 @@ import { Common } from '/src/Common.js';
             const chart = document.createElement('div');
             const text = document.createElement('p');
             const hourText = document.createElement('p');
+            hourText.classList.add('weartherInfo__modal__additionalInfomations__box__hourInfo')
+
+            text.classList.add('weartherInfo__modal__additionalInfomations__box__tempInfo');
             
-            const chartHeightMulitplier = 2;
            
       
 
-            let temperatureChartHeight = hour['temp_c'] ; // this constant is widely used in this map function , not only as temperatur chart height attribute
+            let temperatureChartHeight = hour['temp_c'] ;  // this constant is widely used in this map function , not only as temperatur chart height attribute
 
-            hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/2}rem,0)`
+            hourText.style.transitionDuration = '2s';
+
+            setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/chartHeightMulitplier}rem,0)`},100)
     
             chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
             
@@ -107,6 +120,12 @@ import { Common } from '/src/Common.js';
                 hourText.style.transform = ' rotate(-90deg) translate(2.3rem, 0)';
             }
            
+            
+            
+      
+
+
+
             chart.style.height = 0;
             chart.style.transition = '2s'
             setTimeout(()=> {chart.style.height = `${temperatureChartHeight/chartHeightMulitplier}rem`},100);
@@ -115,11 +134,11 @@ import { Common } from '/src/Common.js';
             text.textContent = `${(temperatureChartHeight).toFixed(1)}°C`;
             
             hourText.textContent = `${hourindex}:00`;
-            hourText.classList.add('weartherInfo__modal__additionalInfomations__box__hourInfo')
+            
     
             
             
-            text.classList.add('weartherInfo__modal__additionalInfomations__box__tempInfo');
+            
             chart.appendChild(text);
             chart.appendChild(hourText);
             boxForChart.appendChild(chart);
@@ -129,20 +148,9 @@ import { Common } from '/src/Common.js';
     
         })
 
-    
-
-
-
-     
-        
-
-       
-
-
-
-    
         
         DOMElement.appendChild(box);
+    
       
     }
 

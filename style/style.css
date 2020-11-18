@@ -184,13 +184,11 @@ width: 50rem;
   
     
 }
-.weartherInfo__modal__dailyForecast__day__hourInfo {
-    transform: translate(0,1.5rem);
-}
+
 
 .weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
     background-color: orange;
-    
+    transition-duration:2s;
     width: 1.5rem;
     margin: 0 0.5rem;
     display: flex;
@@ -206,10 +204,8 @@ width: 50rem;
     width: 5rem;
 }
 .weartherInfo__modal__additionalInfomations__box__hourInfo {
-    transform: rotate(-90deg) ;
+    
     color:salmon;
-    
-    
 }
 .weartherInfo__modal__additionalInfomations__box__tempInfo {
     transform: translate(0px, -1rem);
