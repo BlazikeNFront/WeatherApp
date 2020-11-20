@@ -140,7 +140,7 @@ export class APICall extends Common {
             
 
 
-            console.log(data['current']['wind_dir'])
+            
             new MainInfoCard(this.domElements['additionalInformationBox'],'humidity','icons/drop.svg',`${data['current']['humidity']}%`);
             new MainInfoCard(this.domElements['additionalInformationBox'],'feelLike','icons/hot.svg',`${data['current']['feelslike_c']}°C`);
             new MainInfoCard(this.domElements['additionalInformationBox'],'wind','icons/wind.svg',`${data['current']['wind_kph']}km/h`,{windDirection:data['current']['wind_dir']});
