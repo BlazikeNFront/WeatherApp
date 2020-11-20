@@ -71,16 +71,21 @@ import { Common } from '/src/Common.js';
         iconAndDayBox['children'][0].src = `icons/day/${iconNumber}.png`;
         box.children[2].textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
             
-    
+            
          if(this.data['day']['avgtemp_c'] <-10){
-             console.log(box.children[1])
+           
             
             box.children[1].style.transform='translate(0, -7rem)';
+          }
+          else if(this.data['day']['avgtemp_c'] <-7){
+            
+            box.children[1].style.transform='translate(0, -4.5rem)';
           }
         else if(this.data['day']['avgtemp_c'] <-3){
             
            box.children[1].style.transform='translate(0, -3.5rem)';
          }
+
 
        
         const chartHeightMulitplier = 2;
@@ -104,7 +109,9 @@ import { Common } from '/src/Common.js';
 
             hourText.style.transitionDuration = '2s';
 
+            if(temperatureChartHeight >= 0){
             setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/chartHeightMulitplier}rem,0)`},100)
+          }
     
             chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
             
@@ -112,12 +119,14 @@ import { Common } from '/src/Common.js';
          
            
     
-            if(temperatureChartHeight<0){
+            if(temperatureChartHeight < 0){
+               
                 temperatureChartHeight = Math.abs(temperatureChartHeight)
                 chart.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
                 text.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
                 chart.style.backgroundColor = 'blue';
-                hourText.style.transform = ' rotate(-90deg) translate(2.3rem, 0)';
+                setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(2.3rem, 0)`},100)
+            
             }
            
             

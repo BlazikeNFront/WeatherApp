@@ -33,4 +33,14 @@ export class Common {
         element.classList.add('hidden');
         element2.classList.remove('hidden');
     }
+
+
+    setBackgroundImage(){
+     
+      const screenWidth = window.innerWidth
+      const screenHeight = window.innerHeight
+      document.body.style.backgroundImage = `url('https://picsum.photos/${screenWidth}/${screenHeight}')`;
+      
+    }
+
   }

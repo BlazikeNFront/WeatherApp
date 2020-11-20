@@ -17,7 +17,7 @@
 
 html {
     font-size: 62.5%;
-   
+    
 }
 
 .container {
@@ -223,8 +223,8 @@ width: 50rem;
 
 .footer__container {
     position: absolute;
-    top:93vh;
-    margin-left: 50%;
+    bottom:1rem;
+    margin-left: 87%;
     transform: translate(-50%);
     display:flex;
     align-items: center;
@@ -321,12 +321,12 @@ footer p {
 
 
 
-/* AUTHOR OF ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
-/* AUTHOR OF ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
-/* AUTHOR OF ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
-/* AUTHOR OF ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
-/* AUTHOR OF ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
-/* AUTHOR OF ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
+/* AUTHOR OF WEATHER ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
+/* AUTHOR OF WEATHER ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
+/* AUTHOR OF WEATHER ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
+/* AUTHOR OF WEATHER ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
+/* AUTHOR OF WEATHER ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
+/* AUTHOR OF WEATHER ICON ANIMATIONS -Josh Bader - https://codepen.io/joshbader/pen/EjXgqr */
 
 .icon {
     position: relative;
