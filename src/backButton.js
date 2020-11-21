@@ -9,6 +9,7 @@ export class BackButton extends Common {
                 this.currentView = currentView;
                 this.nextView = nextView;
                 this.buttonEventListener();
+                this.changeWidthAfterClick(this.button,this.domElements['weatherInfo'],this.originalAppWidth)
              }
 
              buttonEventListener(){
@@ -20,5 +21,11 @@ export class BackButton extends Common {
                    }
                    
                  })
+             }
+
+             changeWidthAfterClick(button,element,newWidth){
+               button.addEventListener('click',()=> {
+                  this.changeWidth(newWidth,element);
+                })
              }
          }

@@ -1,8 +1,22 @@
 
 export class Common {
         constructor(){
-           this.createDOMObject();
+          this.originalAppWidth = this.getOriginalAppWidth();
+          this.createDOMObject();
+           
         }
+
+
+
+
+        getOriginalAppWidth(){
+          //This method return number WITHOUT UNIT !!!
+          const regex = /\d+/g;
+         const appWidth =  getComputedStyle(document.body).getPropertyValue('--app-width');
+      
+         return appWidth.match(regex)[0]
+        }
+
 
       createDOMObject(){
         this.domElements = {}
@@ -42,5 +56,11 @@ export class Common {
       document.body.style.backgroundImage = `url('https://picsum.photos/${screenWidth}/${screenHeight}')`;
       
     }
+
+    
+    changeWidth(newWidth,element){
+     
+      element.style.setProperty('--app-width',`${newWidth}rem`);
+  }
 
   }

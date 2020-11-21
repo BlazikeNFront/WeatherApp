@@ -2,9 +2,11 @@ import { Common } from '/src/Common.js';
 import { MainInfoCard } from '/src/mainInfoCard.js';
 import { DailyForecast } from '/src/dailyForecast.js';
 
-export class APICall extends Common {
+
+export class APICall extends Common  {
     constructor(location,typeOfCall){
         super();
+      
         this.location = location;
         this.typeOfCall = typeOfCall;
        
@@ -53,7 +55,8 @@ export class APICall extends Common {
 
     forecastCAll(inputValue){
         //Free API users are able to get forcast for maximuim 3 days...
-      
+       
+
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
             .then(data => {
               if(data.ok){
@@ -65,17 +68,26 @@ export class APICall extends Common {
             .then(data => {
                 
                 this.domElements['dailyForecastModule'].innerHTML = '';
+                
+
 
                 data.forecast.forecastday.map(day => {
                    
                     new DailyForecast(this.domElements['dailyForecastModule'], day);
                   
                  })
+                 this.changeVisibility(this.domElements['dailyForecastModule'])
 
-                 this.changeVisibility(this.domElements['dailyForecastModule']);
+                 setTimeout(()=>{
+                    const newWidth = this.domElements['dailyForecastModule'].offsetWidth /10;
+                    const elementToChangeWidth = this.domElements['weatherInfo'];
+                    this.changeWidth(newWidth,elementToChangeWidth);
+                },100)
+                
+                
 
             })
-
+         
           
     }
 
