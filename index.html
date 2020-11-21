@@ -14,16 +14,16 @@
       </header>
 
       <main>
-        <div class="weatherInfo">
+        <div class="weatherInfo" data-jsLink="weatherInfo">
            
-                <form class="weatheInfo__inputBox" data-jsLink='inputView'>
+              <form class="weatheInfo__inputBox" data-jsLink='inputView'>
                     <label class='weatherInfo__label' for='cityInput'>Type your city</label>
                     <input class='weatherInfo__input' id='cityInput' data-jsLink='input' >
                     <p class="weatherInfo__errorMsg" data-jsLink='inputErrorMsg'></p>
                     <button class='weatherInfo__button' data-jsLink='buttonSubmit' type='submit'>Check Weather ! </button>
                     <p class='weatherInfo__label'> or use geolocation</p>
                     <button class='weatherInfo__button' data-jsLink='buttonGeolocation' type='button'> Geolocation </button>
-                </form>
+              </form>
             
         </h2>
         <div class="weartherInfo__modal hidden" data-jsLink='modalView'>
@@ -44,8 +44,9 @@
               </div>
 
               <button class="weartherInfo__modal__button" data-jsLink="backToSearchViewButton"> Check in another city ! </button>
+         </div>
         </div>
-        </div>
+        
       </main>
     </div>
       <!-- test div -->
