@@ -1,5 +1,5 @@
 
-export class Common {
+export  class Common {
         constructor(){
           this.originalAppWidth = this.getOriginalAppWidth();
           this.createDOMObject();
@@ -31,7 +31,7 @@ export class Common {
       grabNewDOMElement(dataAttributeValue){
         return document.querySelector(`[data-jsLink=${dataAttributeValue}]`);
       }
- ///// change this func - it is not workin on list off elemenets for example on loader div that contains many divs inside
+ 
       changeVisibility(element){
         
        if(getComputedStyle(element).display ==='none') {
@@ -50,7 +50,7 @@ export class Common {
 
 
     setBackgroundImage(){
-     
+     //give functionality to update background not only to window but to any element (div,section...)
       const screenWidth = window.innerWidth
       const screenHeight = window.innerHeight
       document.body.style.backgroundImage = `url('https://picsum.photos/${screenWidth}/${screenHeight}')`;
@@ -62,5 +62,9 @@ export class Common {
      
       element.style.setProperty('--app-width',`${newWidth}rem`);
   }
+
+  
+
+  
 
   }

@@ -5,6 +5,7 @@ import { Common } from '/src/Common.js';
     constructor(domParent,data){
         super();
         this.domParent = domParent;
+      
         this.data = data;
         this.days = {
             0:'Sunday',
@@ -157,9 +158,8 @@ import { Common } from '/src/Common.js';
     
         })
 
-        
         DOMElement.appendChild(box);
-    
+     
       
     }
 

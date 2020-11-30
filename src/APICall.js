@@ -20,6 +20,7 @@ export class APICall extends Common  {
             6:'Saturday',
             
         }
+        
         switch(typeOfCall){
             case 'current':
                 this.currentWeatherCall(this.location);
@@ -55,11 +56,12 @@ export class APICall extends Common  {
 
     forecastCAll(inputValue){
         //Free API users are able to get forcast for maximuim 3 days...
-       
+        this.checkIfNeedsUpdate('forecastWeather',inputValue)
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
             .then(data => {
               if(data.ok){
+                  
                return data.json()
               }
                 else {  new Error('Server Error')
@@ -82,9 +84,18 @@ export class APICall extends Common  {
                     const newWidth = this.domElements['dailyForecastModule'].offsetWidth /10;
                     const elementToChangeWidth = this.domElements['weatherInfo'];
                     this.changeWidth(newWidth,elementToChangeWidth);
-                },100)
+                },100);
                 
+
+                data.dateOfUpdate = String(new Date().getMonth()) + String(new Date().getDate());
                 
+            
+           localStorage.setItem('forecastWeather', JSON.stringify(data));
+        
+            
+
+    
+
 
             })
          
@@ -93,10 +104,17 @@ export class APICall extends Common  {
 
     currentWeatherCall(input){
         this.loader()
-
+         if(!this.checkIfNeedsUpdate('currentWeather', input.value)){
+           console.log('LOCAL WAY');
+           const data = JSON.parse(localStorage.getItem('currentWeather'))
+           this.createCurrentWeatherInfo(data,input);
+           return
+       }  
+       
         this.domElements['additionalInformationBox'].innerHTML = '';
+         console.log('YEEEEEEEEEEEET')
 
-        this.fetchFunction('http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q',input)
+        this.fetchCurrentFunction('http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q',input)
 
         
         input.value = '';
@@ -104,18 +122,22 @@ export class APICall extends Common  {
 
 
     geolocationCall(){
+       
         this.loader()
+
+        
         navigator.geolocation.getCurrentPosition((coordinates)=> {
             const latitude  = coordinates.coords.latitude;
             const longitude = coordinates.coords.longitude;
             this.domElements['additionalInformationBox'].innerHTML = '';
-            this.fetchFunction(`http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${latitude+','+longitude}`)
+            this.fetchCurrentFunction(`http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${latitude+','+longitude}`)
          
     })}
     
 
 
-    fetchFunction(url,input){
+    fetchCurrentFunction(url,input){
+        
            let fetchUrl;
            
            if(input){
@@ -134,7 +156,9 @@ export class APICall extends Common  {
              return data.json()
             }})
         .then(data=>{ 
-           
+           console.log(data);
+           data = JSON.parse(localStorage.getItem('currentWeather'))
+           console.log(data)
            if(input){ input.value = ''};
             const arrayFromLink = data['current']['condition']['icon'].split('');
             const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
@@ -156,10 +180,14 @@ export class APICall extends Common  {
             new MainInfoCard(this.domElements['additionalInformationBox'],'humidity','icons/drop.svg',`${data['current']['humidity']}%`);
             new MainInfoCard(this.domElements['additionalInformationBox'],'feelLike','icons/hot.svg',`${data['current']['feelslike_c']}°C`);
             new MainInfoCard(this.domElements['additionalInformationBox'],'wind','icons/wind.svg',`${data['current']['wind_kph']}km/h`,{windDirection:data['current']['wind_dir']});
-        
+            
+            
+
+
+            data.dateOfUpdate =  Math.round(new Date() / 1000);
+            localStorage.setItem('currentWeather', JSON.stringify(data))
            
-
-
+            
 
            
             this.domElements['inputErrorMsg'].textContent = '';
@@ -171,5 +199,73 @@ export class APICall extends Common  {
             this.domElements['inputErrorMsg'].textContent = 'Wrong city!' ;
         });
        }
+       
+
+checkIfNeedsUpdate(typeOfWeatherInfo,location){
+        let currentDate = String(new Date().getMonth()) + String(new Date().getDate())
+        const localData = JSON.parse(localStorage.getItem(typeOfWeatherInfo));
+        const dateOfLastUpdate = localData.dateOfUpdate
+
+
+     
+        if(location.toLowerCase() !== localData.location.name.toLowerCase()){
+            return true
+        }
+        if (typeOfWeatherInfo === 'forecastWeather'){
+            console.log(currentDate,dateOfLastUpdate)
+            if( currentDate - dateOfLastUpdate - 1 > 0){
+                console.log('forecast FETCH ON')
+                return true
+            }}
+
+        if (typeOfWeatherInfo === 'currentWeather'){
+            currentDate = Math.round(new Date() / 1000)
+            if( currentDate - dateOfLastUpdate - 3600 > 0){
+                return true
+            }}
+
+            console.log('NO FETCH')
+            return false
+        }
+
+
+createCurrentWeatherInfo(data,input){
+        
+       if(input){ input.value = ''};
+        const arrayFromLink = data['current']['condition']['icon'].split('');
+        const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
+       
+        if( data['current']['condition']['icon'].includes('day')){
+        this.domElements['mainInfoIcon'].src=`icons/day/${iconNumber}.png`;
+        }
+            else { this.domElements['mainInfoIcon'].src = `icons/night/${113}.png` ;
+        
+        }  
+        
+        this.domElements['cityName'].textContent = data['location']['name'];
+        this.domElements['weatherIconText'].textContent = data['current']['condition']['text'];
+        this.domElements['mainInfoTemperature'].textContent = `${data['current']['temp_c']}°C`;
+        
+
+
+        
+        new MainInfoCard(this.domElements['additionalInformationBox'],'humidity','icons/drop.svg',`${data['current']['humidity']}%`);
+        new MainInfoCard(this.domElements['additionalInformationBox'],'feelLike','icons/hot.svg',`${data['current']['feelslike_c']}°C`);
+        new MainInfoCard(this.domElements['additionalInformationBox'],'wind','icons/wind.svg',`${data['current']['wind_kph']}km/h`,{windDirection:data['current']['wind_dir']});
+        
+        
+
+
+        data.dateOfUpdate =  Math.round(new Date() / 1000);
+        localStorage.setItem('currentWeather', JSON.stringify(data))
+       
+        
+
+       
+        this.domElements['inputErrorMsg'].textContent = '';
+        this.loader()
+      this.switchView(this.domElements['inputView'],this.domElements['modalView']);
+       }
+       
 }
 
