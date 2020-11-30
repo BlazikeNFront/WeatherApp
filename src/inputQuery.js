@@ -15,6 +15,13 @@ export class InputQuery extends Common {
                 element.addEventListener('click' ,(e)=> {
                  
                     e.preventDefault();
+                    const currentDate  = new Date().getTime();
+                    const lastUpdateDate = localStorage.getItem('lastUpdate');
+                    
+                    /* if( !lastUpadteDate || lastUpadteDate < currentDate){
+                        console.log('work')
+                    } */
+
                     new APICall(e.path[1][0], 'current');
 
 
