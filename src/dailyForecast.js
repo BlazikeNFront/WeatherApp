@@ -24,6 +24,14 @@ import { Common } from '/src/Common.js';
       
     }
     createBox(DOMElement){
+
+        //let browserDiffrence = 
+
+       // navigator.userAgent.indexOf('Chrome')
+        
+        
+
+
         const box =document.createElement('div');
         box.classList.add('weartherInfo__modal__dailyForecast__day');
 
@@ -66,7 +74,6 @@ import { Common } from '/src/Common.js';
 
         
 
-       
         
         iconAndDayBox['children'][1].textContent = this.days[Math.floor((this.data['date_epoch']/86400)+4)%7];
         iconAndDayBox['children'][0].src = `icons/day/${iconNumber}.png`;
@@ -97,11 +104,11 @@ import { Common } from '/src/Common.js';
             
             const boxForChart = document.createElement('div');
             const chart = document.createElement('div');
-            const text = document.createElement('p');
+            const tempInfo = document.createElement('p');
             const hourText = document.createElement('p');
             hourText.classList.add('weartherInfo__modal__additionalInfomations__box__hourInfo')
 
-            text.classList.add('weartherInfo__modal__additionalInfomations__box__tempInfo');
+            tempInfo.classList.add('weartherInfo__modal__additionalInfomations__box__tempInfo');
             
            
       
@@ -112,6 +119,7 @@ import { Common } from '/src/Common.js';
 
             if(temperatureChartHeight >= 0){
             setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/chartHeightMulitplier}rem,0)`},100)
+            tempInfo.textContent = `${(temperatureChartHeight).toFixed(1)}°C`;
           }
     
             chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
@@ -121,12 +129,13 @@ import { Common } from '/src/Common.js';
            
     
             if(temperatureChartHeight < 0){
-               
+                
                 temperatureChartHeight = Math.abs(temperatureChartHeight)
                 chart.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
-                text.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
+                tempInfo.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
                 chart.style.backgroundColor = 'blue';
                 setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(2.3rem, 0)`},100)
+                tempInfo.textContent = `-${(temperatureChartHeight).toFixed(1)}°C`;
             
             }
            
@@ -135,13 +144,13 @@ import { Common } from '/src/Common.js';
       
 
 
-
+         
             chart.style.height = 0;
             chart.style.transition = '2s'
             setTimeout(()=> {chart.style.height = `${temperatureChartHeight/chartHeightMulitplier}rem`},100);
     
             
-            text.textContent = `${(temperatureChartHeight).toFixed(1)}°C`;
+          
             
             hourText.textContent = `${hourindex}:00`;
             
@@ -149,7 +158,7 @@ import { Common } from '/src/Common.js';
             
             
             
-            chart.appendChild(text);
+            chart.appendChild(tempInfo);
             chart.appendChild(hourText);
             boxForChart.appendChild(chart);
             
@@ -172,71 +181,3 @@ import { Common } from '/src/Common.js';
 
 
 
-/*Array.from(document.querySelectorAll('.weartherInfo__modal__dailyForecast__day__temperatureChart')).map((element,index) => {
-                 
-
-    data['forecast']['forecastday'][index]['hour'].map((hour,hourindex) => {
-        
-
-        const box = document.createElement('div');
-        const chart = document.createElement('div');
-        const text = document.createElement('p');
-        const hourText = document.createElement('p');
-        const chartHeightMulitplier = 2;
-       
-        
-        hourText.style.transform = `rotate(-90deg) translate(-${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c'])/2}rem,0)`
-
-        chart.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__chart');
-
-        let temperatureChartHeight = data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c'] ;
-
-        if(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']<0){
-            temperatureChartHeight = Math.abs(temperatureChartHeight)
-            chart.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
-            text.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
-            chart.style.backgroundColor = 'blue';
-            hourText.style.transform = ' rotate(-90deg) translate(2.3rem, 0)';
-        }
-       
-
-
-        chart.style.height = `${temperatureChartHeight/chartHeightMulitplier}rem`;
-
-        
-        text.textContent = `${(data['forecast']['forecastday'][index]['hour'][hourindex]['temp_c']).toFixed(1)}°C`;
-        
-        hourText.textContent = `${hourindex}:00`;
-        hourText.classList.add('weartherInfo__modal__additionalInfomations__box__hourInfo')
-
-        
-        
-        text.classList.add('weartherInfo__modal__additionalInfomations__box__tempInfo');
-        chart.appendChild(text);
-        chart.appendChild(hourText);
-        box.appendChild(chart);
-        
-        
-        element.appendChild(box);
-
-    })*/
-
-
-  
-        /*    if( data['current']['condition']['icon'].includes('day')){
-            this.domElements['mainInfoIcon'].src=`icons/day/${iconNumber}.png`;
-            }
-                else { this.domElements['mainInfoIcon'].src = `icons/night/${113}.png` ;
-            
-            }  
-
-/*<div class="weartherInfo__modal__dailyForecast__day">
-    <div class="weartherInfo__modal__dailyForecast__day__iconAndDay">
-        <img src='#' alt='Weather Icon'>
-        <p class="weartherInfo__modal__dailyForecast__day__text">wednesday</p>
-    </div>
-    <div class='weartherInfo__modal__dailyForecast__day__temperatureChart'>
-  
-    </div>
-    <p class='weartherInfo__modal__dailyForecast__day__temperature'>21</p>
-</div>*/

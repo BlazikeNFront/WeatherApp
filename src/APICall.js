@@ -56,6 +56,9 @@ export class APICall extends Common  {
 
     forecastCAll(inputValue){
         //Free API users are able to get forcast for maximuim 3 days...
+
+       
+
         this.checkIfNeedsUpdate('forecastWeather',inputValue)
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
@@ -107,12 +110,13 @@ export class APICall extends Common  {
          if(!this.checkIfNeedsUpdate('currentWeather', input.value)){
            console.log('LOCAL WAY');
            const data = JSON.parse(localStorage.getItem('currentWeather'))
+           this.domElements['additionalInformationBox'].innerHTML = '';
            this.createCurrentWeatherInfo(data,input);
            return
        }  
        
         this.domElements['additionalInformationBox'].innerHTML = '';
-         console.log('YEEEEEEEEEEEET')
+       
 
         this.fetchCurrentFunction('http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q',input)
 
@@ -156,9 +160,8 @@ export class APICall extends Common  {
              return data.json()
             }})
         .then(data=>{ 
-           console.log(data);
-           data = JSON.parse(localStorage.getItem('currentWeather'))
-           console.log(data)
+           
+           
            if(input){ input.value = ''};
             const arrayFromLink = data['current']['condition']['icon'].split('');
             const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
@@ -204,7 +207,11 @@ export class APICall extends Common  {
 checkIfNeedsUpdate(typeOfWeatherInfo,location){
         let currentDate = String(new Date().getMonth()) + String(new Date().getDate())
         const localData = JSON.parse(localStorage.getItem(typeOfWeatherInfo));
-        const dateOfLastUpdate = localData.dateOfUpdate
+        if(localData === null){
+            return true
+        }
+        const dateOfLastUpdate = localData.dateOfUpdate 
+       
 
 
      
@@ -212,7 +219,7 @@ checkIfNeedsUpdate(typeOfWeatherInfo,location){
             return true
         }
         if (typeOfWeatherInfo === 'forecastWeather'){
-            console.log(currentDate,dateOfLastUpdate)
+            
             if( currentDate - dateOfLastUpdate - 1 > 0){
                 console.log('forecast FETCH ON')
                 return true
@@ -223,8 +230,6 @@ checkIfNeedsUpdate(typeOfWeatherInfo,location){
             if( currentDate - dateOfLastUpdate - 3600 > 0){
                 return true
             }}
-
-            console.log('NO FETCH')
             return false
         }
 

@@ -12,17 +12,11 @@ export class InputQuery extends Common {
 
 
             inputEventListener(element){
-                element.addEventListener('click' ,(e)=> {
+                element.addEventListener('click' ,(event)=> {
                  
-                    e.preventDefault();
-                    const currentDate  = new Date().getTime();
-                    const lastUpdateDate = localStorage.getItem('lastUpdate');
-                    
-                    /* if( !lastUpadteDate || lastUpadteDate < currentDate){
-                        console.log('work')
-                    } */
-
-                    new APICall(e.path[1][0], 'current');
+                    event.preventDefault();
+              
+                    new APICall(this.domElements['input'], 'current');
 
 
                     })}

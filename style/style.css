@@ -1,3 +1,11 @@
+
+
+
+
+
+
+
+
 :root {
     --main-font:'Rubik', sans-serif;
     --app-width:60rem;
@@ -13,10 +21,12 @@
     padding: 0;
     box-sizing: border-box;
     
+    
 }
 
 html {
     font-size: 62.5%;
+    color:white;
     
 }
 
@@ -200,7 +210,6 @@ width: 50rem;
     transition-duration:2s;
     width: 1.5rem;
     margin: 0 0.5rem;
-    display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: initial;
