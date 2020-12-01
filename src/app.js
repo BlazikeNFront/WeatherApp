@@ -8,7 +8,7 @@ class WeatherApp extends Common{
     constructor(){
         super();
         this.domElements = this.createDOMObject();
-      
+        
         this.setBackgroundImage()
         new InputQuery(this.domElements['buttonSubmit']);
         new BackButton(this.domElements['backToSearchViewButton'],this.domElements['modalView'],this.domElements['inputView']);
