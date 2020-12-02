@@ -9,6 +9,8 @@
 :root {
     --main-font:'Rubik', sans-serif;
     --app-width:60rem;
+    --app-height:85rem;
+    --app-width-forecastData:100rem;
 }
 
 
@@ -63,13 +65,15 @@ main {
 
 .weatherInfo {
   width:var(--app-width);
+  height:var(--app-height);
+  padding-bottom: 2rem;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0,0,0,0.8);
   transition: all 1s ease-out ;
   overflow: hidden;
  
@@ -87,15 +91,25 @@ main {
 }
 
 .weatherInfo__label {
-    margin-bottom:1.5rem;
+    margin:1.5rem;
     font-size:2rem;
     font-family: var(--main-font);
     
 }
+
+.weatherInfo__inputBox__inputContainer {
+display: flex;
+align-items: center;
+justify-content: center;
+margin-left: 6rem;
+}
+
 .weatherInfo__input {
     margin: 1rem 6rem;
     padding: 1rem 3rem;
-    border:3px solid black;
+    border:3px solid white;
+    color:white;
+    background-color:rgba(0,0,0,0.7);
     border-radius: 1rem;
     font-family: var(--main-font);
     font-size:2.5rem;
@@ -111,7 +125,8 @@ main {
 .weatherInfo__button {
     margin-top:1rem;
     padding:1rem 0.5rem;
-    border:2px solid black;
+    border:2px solid white;
+    color:white;
     border-radius: 0.4rem;
     background-color: transparent;
     font-family: var(--main-font);
@@ -173,7 +188,7 @@ width: 50rem;
 }
 
 .weartherInfo__modal__dailyForecast__day__iconAndDay{
-    display:flex;
+    
     justify-content: space-between;
     align-items: center;
     flex-basis: 29%;
@@ -185,8 +200,8 @@ width: 50rem;
     
     width:18rem;
     padding: 1rem 0;
-   
-    border:3px solid black;
+    color:white;
+    border:3px solid white;
     border-radius: 1rem;
     background:transparent;
 
@@ -195,8 +210,8 @@ width: 50rem;
     display:flex;
     align-items: flex-end;
     justify-content: space-around;
-    flex-grow:2;
-    font-size: 0.7rem;
+   
+    font-size: 0.85rem;
     text-align: center;
     margin: 1rem;
 
@@ -208,7 +223,7 @@ width: 50rem;
 .weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
     background-color: orange;
     transition-duration:2s;
-    width: 1.5rem;
+    width:2rem;
     margin: 0 0.5rem;
     flex-direction: column;
     justify-content: end;
@@ -233,8 +248,8 @@ width: 50rem;
     margin-top: 8rem;
     width:18rem;
     padding: 1rem 0;
-    
-    border:3px solid black;
+    color:white;
+    border:3px solid white;
     border-radius: 1rem;
     background:transparent;
 }
@@ -246,9 +261,16 @@ width: 50rem;
     transform: translate(-50%);
     display:flex;
     align-items: center;
+    background-color: rgba(0,0,0,0.7);
+    padding: 0.5rem;
+    border-radius: 10px;
 }
 footer p {
     margin-right: 1rem;
+    color:white;
+}
+footer a {
+  color:white
 }
 
 
@@ -256,10 +278,14 @@ footer p {
 
 
 .loader {
-  display:none;
-  position: absolute;
-  top: 81px;
-  margin-left: 69%;
+display: none;
+position: relative;
+width: 80px;
+height: 80px;
+transform: scale(0.5);
+top: 13.5rem;
+left: 21.1rem;
+ 
   width: 80px;
   height: 80px;
   transform:scale(0.5)
@@ -270,7 +296,7 @@ footer p {
   
 }
 .loader > div {
-  background-color: black;
+  background-color: white;
 }
 .loader div:after {
   content: " ";
@@ -279,7 +305,7 @@ footer p {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: black;
+  background: white;
   margin: -4px 0 0 -4px;
 }
 .loader div:nth-child(1) {
