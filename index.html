@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <link rel='stylesheet' href="/style/style.css">
+    <link href="/style/tablet.css" rel="stylesheet"  media="(min-width:768px)">
+    <link href="/style/mobileL.css" rel="stylesheet"  media="(max-width:750px)">
+    
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet">
+    
     <title>WeatherApp</title>
 </head>
 <body>
@@ -30,7 +34,7 @@
                     <p class='weatherInfo__label'> or use geolocation</p>
                     <button class='weatherInfo__button' data-jsLink='buttonGeolocation' type='button'> Geolocation </button>
               </form>
-               <!--Loader-->
+              
             
         </h2>
         <div class="weartherInfo__modal hidden" data-jsLink='modalView'>

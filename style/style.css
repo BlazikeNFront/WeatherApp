@@ -49,7 +49,7 @@ h1 {
 }
 
 h3 {
-    font-size: 2rem;
+  font-size: 4rem;
     
     text-align: center;
 }
@@ -75,7 +75,7 @@ main {
   text-align: center;
   background-color: rgba(0,0,0,0.8);
   transition: all 1s ease-out ;
-  overflow: hidden;
+  overflow: hidden; 
  
 
 }
@@ -181,7 +181,7 @@ width: 50rem;
 
 
 .weartherInfo__modal__dailyForecast__day{
-    margin: 1rem 0;
+    margin: 2rem 0;
     display:flex;
     justify-content: space-between;
     align-items: center;
@@ -191,7 +191,7 @@ width: 50rem;
     
     justify-content: space-between;
     align-items: center;
-    flex-basis: 29%;
+   
 }
 
 .weartherInfo__modal__forecastButton {

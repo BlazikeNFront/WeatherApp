@@ -1,0 +1,36 @@
+h3 {
+    font-size: 3rem;
+}
+
+ .weartherInfo__modal__dailyForecast__day__temperatureChart__container {
+    width:35rem;
+    display:flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    font-size: 0.85rem;
+    text-align: center;
+    transform: scale(0.5);
+    
+} 
+
+.weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
+    width: 1.5rem;
+}
+
+.weartherInfo__modal__dailyForecast__day__iconAndDay  img{
+    width: 4rem;
+}
+
+.weartherInfo__modal__additionalInfomations {
+    width: 85%;
+    margin-left: 50%;
+    transform: translate(-50%);
+}
+
+.footer__container {
+    margin-left: 82%;
+}
+
+.footer__container img {
+    width:5rem;
+}

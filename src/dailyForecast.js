@@ -48,6 +48,8 @@ import { Common } from '/src/Common.js';
         iconAndDayBox.appendChild(icon);
         iconAndDayBox.appendChild(day);
 
+        const  temperetureChartBoxContainer = document.createElement('div')
+        temperetureChartBoxContainer.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__container');
         const temperetureChartBox = document.createElement('div');
         temperetureChartBox.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart');
         const hourInfo = document.createElement('p');
@@ -64,10 +66,11 @@ import { Common } from '/src/Common.js';
             else {
                 hourInfo.style.transform = 'translate(0,-0.5rem)';
             }
-       
+        
         temperetureChartBox.appendChild(hourInfo)
         box.appendChild(iconAndDayBox);
-        box.appendChild(temperetureChartBox);
+       temperetureChartBoxContainer.appendChild(temperetureChartBox);
+        box.appendChild(temperetureChartBoxContainer);
         box.appendChild(averageTemperatureText);
 
 
@@ -180,8 +183,9 @@ import { Common } from '/src/Common.js';
             box.children[1].appendChild(boxForChart)
     
         })
-
-        DOMElement.appendChild(box);
+     
+        DOMElement.appendChild(box);   
+       
      
       
     }
