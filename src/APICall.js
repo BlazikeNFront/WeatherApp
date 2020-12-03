@@ -9,6 +9,7 @@ export class APICall extends Common  {
       
         this.location = location;
         this.typeOfCall = typeOfCall;
+      
        
         this.daysOfWeek = {
             0:'Sunday',
@@ -54,12 +55,20 @@ export class APICall extends Common  {
         
     }
 
+   
+
     forecastCAll(inputValue){
         //Free API users are able to get forcast for maximuim 3 days...
 
        
 
-        this.checkIfNeedsUpdate('forecastWeather',inputValue)
+        if(!this.checkIfNeedsUpdate('forecastWeather',inputValue)){
+            const data =  JSON.parse(localStorage.getItem('forecastWeather'))
+            this.createForecastWeatherInfo(data);
+        
+           
+            return
+        };
 
         fetch(`http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`)
             .then(data => {
@@ -71,35 +80,9 @@ export class APICall extends Common  {
             }
             })
             .then(data => {
-                
-                this.domElements['dailyForecastModule'].innerHTML = '';
-                
-
-
-                data.forecast.forecastday.map(day => {
-                   
-                    new DailyForecast(this.domElements['dailyForecastModule'], day);
-                  
-                 })
-                 this.changeVisibility(this.domElements['dailyForecastModule'])
-
-                 setTimeout(()=>{
-                    const newWidth = this.domElements['dailyForecastModule'].offsetWidth /10;
-                    const elementToChangeWidth = this.domElements['weatherInfo'];
-                    this.changeWidth(newWidth,elementToChangeWidth);
-                },100);
-                
-
-                data.dateOfUpdate = String(new Date().getMonth()) + String(new Date().getDate());
-                
             
-           localStorage.setItem('forecastWeather', JSON.stringify(data));
-        
-            
-
-    
-
-
+                this.createForecastWeatherInfo(data);
+               
             })
          
           
@@ -108,16 +91,14 @@ export class APICall extends Common  {
     currentWeatherCall(input){
         this.loader()
          if(!this.checkIfNeedsUpdate('currentWeather', input.value)){
-           console.log('LOCAL WAY');
+          
            const data = JSON.parse(localStorage.getItem('currentWeather'))
-           this.domElements['additionalInformationBox'].innerHTML = '';
+          
            this.createCurrentWeatherInfo(data,input);
            return
        }  
-       
-        this.domElements['additionalInformationBox'].innerHTML = '';
-       
 
+        this.domElements['additionalInformationBox'].innerHTML = '';
         this.fetchCurrentFunction('http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q',input)
 
         
@@ -232,10 +213,10 @@ checkIfNeedsUpdate(typeOfWeatherInfo,location){
             }}
             return false
         }
-
+        //changeTextInForecastButton()
 
 createCurrentWeatherInfo(data,input){
-        
+       this.domElements['additionalInformationBox'].innerHTML = '';
        if(input){ input.value = ''};
         const arrayFromLink = data['current']['condition']['icon'].split('');
         const iconNumber = arrayFromLink.slice(arrayFromLink.length-7,arrayFromLink.length-4).join('');
@@ -271,6 +252,34 @@ createCurrentWeatherInfo(data,input){
         this.loader()
       this.switchView(this.domElements['inputView'],this.domElements['modalView']);
        }
+
+createForecastWeatherInfo(data){
+    this.domElements['dailyForecastModule'].innerHTML = '';
+                
+
+
+    data.forecast.forecastday.map(day => {
+       
+        new DailyForecast(this.domElements['dailyForecastModule'], day);
+      
+     })
+     this.changeVisibility(this.domElements['dailyForecastModule'])
+
+     setTimeout(()=>{
+
+        const newWidth = window.getComputedStyle(document.body).getPropertyValue('--app-width-forecastData').split('rem')[0];
+        
+        const elementToChangeWidth = this.domElements['weatherInfo'];
+        this.changeWidth(newWidth,elementToChangeWidth);
+    },100);
+    
+
+    data.dateOfUpdate = String(new Date().getMonth()) + String(new Date().getDate());
+    
+
+localStorage.setItem('forecastWeather', JSON.stringify(data));
+
+}
        
 }
 

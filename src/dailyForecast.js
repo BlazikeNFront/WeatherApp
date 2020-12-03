@@ -25,9 +25,7 @@ import { Common } from '/src/Common.js';
     }
     createBox(DOMElement){
 
-        //let browserDiffrence = 
-
-       // navigator.userAgent.indexOf('Chrome')
+        
         
         
 
@@ -50,6 +48,8 @@ import { Common } from '/src/Common.js';
         iconAndDayBox.appendChild(icon);
         iconAndDayBox.appendChild(day);
 
+        const  temperetureChartBoxContainer = document.createElement('div')
+        temperetureChartBoxContainer.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart__container');
         const temperetureChartBox = document.createElement('div');
         temperetureChartBox.classList.add('weartherInfo__modal__dailyForecast__day__temperatureChart');
         const hourInfo = document.createElement('p');
@@ -61,14 +61,16 @@ import { Common } from '/src/Common.js';
         
         if(this.data['hour'][0]['temp_c'] >  0){
             hourInfo.style.transform = 'translate(0,1.5rem)';
+            
         }
             else {
                 hourInfo.style.transform = 'translate(0,-0.5rem)';
             }
-       
+        
         temperetureChartBox.appendChild(hourInfo)
         box.appendChild(iconAndDayBox);
-        box.appendChild(temperetureChartBox);
+       temperetureChartBoxContainer.appendChild(temperetureChartBox);
+        box.appendChild(temperetureChartBoxContainer);
         box.appendChild(averageTemperatureText);
 
 
@@ -78,7 +80,8 @@ import { Common } from '/src/Common.js';
         iconAndDayBox['children'][1].textContent = this.days[Math.floor((this.data['date_epoch']/86400)+4)%7];
         iconAndDayBox['children'][0].src = `icons/day/${iconNumber}.png`;
         box.children[2].textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
-            
+
+       
             
          if(this.data['day']['avgtemp_c'] <-10){
            
@@ -95,8 +98,19 @@ import { Common } from '/src/Common.js';
          }
 
 
-       
-        const chartHeightMulitplier = 2;
+        let chartHeightMulitplier = 2 ;
+        const rawTemperatureChartHeight = Math.abs(this.data['day']['avgtemp_c'])
+       if( rawTemperatureChartHeight > 10){
+        chartHeightMulitplier = 2.5
+       }
+       else if(rawTemperatureChartHeight > 20){
+        chartHeightMulitplier =2.75
+       }
+       else if(rawTemperatureChartHeight > 30){
+        chartHeightMulitplier =3
+       }
+  
+        
 
 
           this.data['hour'].map((hour,hourindex) => {
@@ -118,7 +132,9 @@ import { Common } from '/src/Common.js';
             hourText.style.transitionDuration = '2s';
 
             if(temperatureChartHeight >= 0){
-            setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/chartHeightMulitplier}rem,0)`},100)
+            setTimeout(()=>{
+              
+            hourText.style.transform = `rotate(-90deg) translate(-${(temperatureChartHeight)/chartHeightMulitplier + 0.2}rem,0)`},100)
             tempInfo.textContent = `${(temperatureChartHeight).toFixed(1)}°C`;
           }
     
@@ -132,9 +148,10 @@ import { Common } from '/src/Common.js';
                 
                 temperatureChartHeight = Math.abs(temperatureChartHeight)
                 chart.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
-                tempInfo.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
+                tempInfo.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier + 0.2}rem`;
                 chart.style.backgroundColor = 'blue';
-                setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(2.3rem, 0)`},100)
+                chart.classList.add('below-0-chartAnimation')
+                setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(2.7rem, 0)`},100)
                 tempInfo.textContent = `-${(temperatureChartHeight).toFixed(1)}°C`;
             
             }
@@ -166,8 +183,9 @@ import { Common } from '/src/Common.js';
             box.children[1].appendChild(boxForChart)
     
         })
-
-        DOMElement.appendChild(box);
+     
+        DOMElement.appendChild(box);   
+       
      
       
     }

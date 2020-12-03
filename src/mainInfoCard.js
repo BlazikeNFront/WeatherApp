@@ -21,7 +21,7 @@ export class MainInfoCard extends Common {
         }
        
     }
-
+    
 
     humidity(domParent){
         const div = document.createElement('div');
