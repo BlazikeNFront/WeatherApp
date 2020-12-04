@@ -68,6 +68,8 @@ import { Common } from '/src/Common.js';
             }
         
         temperetureChartBox.appendChild(hourInfo)
+        averageTemperatureText.classList.add('weartherInfo__modal__dailyForecast__avarageTemp')
+        
         box.appendChild(iconAndDayBox);
        temperetureChartBoxContainer.appendChild(temperetureChartBox);
         box.appendChild(temperetureChartBoxContainer);
@@ -79,7 +81,8 @@ import { Common } from '/src/Common.js';
         
         iconAndDayBox['children'][1].textContent = this.days[Math.floor((this.data['date_epoch']/86400)+4)%7];
         iconAndDayBox['children'][0].src = `icons/day/${iconNumber}.png`;
-        box.children[2].textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
+        averageTemperatureText.textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
+
 
        
             
