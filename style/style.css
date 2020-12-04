@@ -161,7 +161,10 @@ width: 50rem;
 .weartherInfo__modal__additionalInfomations__text__windDirection {
     margin:0rem;
 }
+.weartherInfo__modal__dailyForecast__avarageTemp {
 
+  width:initial;
+}
 .weartherInfo__modal__additionalInfomations__box__feelLike {
     transform: translate(-0.5rem);
 }

@@ -6,6 +6,8 @@
 }
 .weartherInfo__modal__dailyForecast__day__temperatureChart__container {
     width:auto;
+    height:auto;
+    overflow: visible;
     display:flex;
     align-items: flex-end;
     justify-content: space-around;
