@@ -43,7 +43,12 @@ h3 {
 
 .weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
     width: 1.5rem;
+    
 }
+
+.weartherInfo__modal__dailyForecast__day__temperatureChart :nth-child(1) {
+    padding-left: 35rem;
+  }
 .weartherInfo__modal__dailyForecast__day__iconAndDay {
   
     padding-left: 1rem;

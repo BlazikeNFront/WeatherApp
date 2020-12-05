@@ -59,23 +59,23 @@ import { Common } from '/src/Common.js';
 
         hourInfo.textContent = 'HOUR'
         
-        if(this.data['hour'][0]['temp_c'] >  0){
-            hourInfo.style.transform = 'translate(0,1.5rem)';
-            
-        }
-            else {
-                hourInfo.style.transform = 'translate(0,-0.5rem)';
-            }
+    
         
         temperetureChartBox.appendChild(hourInfo)
         averageTemperatureText.classList.add('weartherInfo__modal__dailyForecast__avarageTemp')
         
         box.appendChild(iconAndDayBox);
-       temperetureChartBoxContainer.appendChild(temperetureChartBox);
+        temperetureChartBoxContainer.appendChild(temperetureChartBox);
         box.appendChild(temperetureChartBoxContainer);
         box.appendChild(averageTemperatureText);
 
-
+        if(this.data['hour'][0]['temp_c'] >  0){
+          hourInfo.style.transform = 'translate(0, 2.8rem)';
+          
+      }
+          else {
+              hourInfo.style.transform = 'translate(0,-0.5rem)';
+          }
         
 
         
@@ -84,21 +84,37 @@ import { Common } from '/src/Common.js';
         averageTemperatureText.textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
 
 
-       
+          const widthOfScreen = window.innerWidth;
+         
+
+          if(widthOfScreen >= 768){
+
+
+            if(this.data['hour'][0]['temp_c'] >  0){
+              hourInfo.style.transform = 'translate(0,1.5rem)';
+            }
+              else {
+                  hourInfo.style.transform = 'translate(0,-0.5rem)';
+              }
+
             
-         if(this.data['day']['avgtemp_c'] <-10){
+
+            if(this.data['day']['avgtemp_c'] <-10){
            
             
-            box.children[1].style.transform='translate(0, -7rem)';
+              box.children[1].style.transform='translate(0, -7rem)';
+            }
+            else if(this.data['day']['avgtemp_c'] <-7){
+              
+              box.children[1].style.transform='translate(0, -4.5rem)';
+            }
+          else if(this.data['day']['avgtemp_c'] <-3){
+              
+             box.children[1].style.transform='translate(0, -3.5rem)';
+           }
           }
-          else if(this.data['day']['avgtemp_c'] <-7){
             
-            box.children[1].style.transform='translate(0, -4.5rem)';
-          }
-        else if(this.data['day']['avgtemp_c'] <-3){
-            
-           box.children[1].style.transform='translate(0, -3.5rem)';
-         }
+        
 
 
         let chartHeightMulitplier = 2 ;
@@ -153,6 +169,7 @@ import { Common } from '/src/Common.js';
                 chart.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier}rem`;
                 tempInfo.style.transform = `translate(0,${temperatureChartHeight/chartHeightMulitplier + 0.2}rem`;
                 chart.style.backgroundColor = 'blue';
+                chart.style.borderRadius = '0 0 10px 10px';
                 chart.classList.add('below-0-chartAnimation')
                 setTimeout(()=>{hourText.style.transform = `rotate(-90deg) translate(2.7rem, 0)`},100)
                 tempInfo.textContent = `-${(temperatureChartHeight).toFixed(1)}°C`;

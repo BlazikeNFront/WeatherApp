@@ -1,18 +1,9 @@
-
-
-
-
-
-
-
-
 :root {
     --main-font:'Rubik', sans-serif;
-    --app-width:60rem;
-    --app-height:85rem;
-    --app-width-forecastData:100rem;
+    --app-width: 35rem;
+    --app-width-forecastData:36rem;
+    --app-height:79rem;
 }
-
 
 
 *,
@@ -47,6 +38,100 @@ h1 {
     
     text-align: center;
 }
+
+
+h3 {
+    font-size: 3rem;
+}
+
+.weatherInfo__input {
+    margin: 0.5rem 2rem;
+    font-size: 2rem;
+  
+}
+
+.weartherInfo__modal__dailyForecast__day {
+    margin:0;
+    width: 35rem;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+   
+}
+
+
+.weartherInfo__modal__dailyForecast__avarageTemp {
+    width:7rem;
+}
+
+
+ .weartherInfo__modal__dailyForecast__day__temperatureChart__container {
+        width: 23rem;
+        height:10rem;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-around;
+        font-size: 0.85rem;
+        text-align: center;
+        transform: scale(0.9);
+        overflow: scroll;
+} 
+.weartherInfo__modal__dailyForecast__day__temperatureChart :nth-child(1) {
+  padding-left: 52rem;
+}
+.weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
+    width: 1.5rem;
+    background-color: orange;
+    border-radius: 10px 10px 0 0;
+    transition-duration:2s;
+    margin: 0 0.5rem;
+    flex-direction: column;
+    justify-content: end;
+    align-items: initial;
+    
+    
+}
+.weartherInfo__modal__dailyForecast__day__iconAndDay {
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 1rem;
+}
+.weartherInfo__modal__dailyForecast__day__iconAndDay  img{
+    width: 4rem;
+
+}
+
+.weartherInfo__modal__additionalInfomations {
+    width: 85%;
+    margin-top: 2rem;
+    margin-left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer__container {
+    margin-left: 80%;
+    position: absolute;
+    bottom:1rem;
+    transform: translate(-50%);
+    display:flex;
+    align-items: center;
+    background-color: rgba(0,0,0,0.7);
+    padding: 0.5rem;
+    border-radius: 10px;
+}
+
+.footer__container img {
+    width:5rem;
+}
+
+
+
+
+
+
 
 h3 {
   font-size: 4rem;
@@ -105,15 +190,17 @@ margin-left: 6rem;
 }
 
 .weatherInfo__input {
-    margin: 1rem 6rem;
+    margin: 0.5rem 2rem;
     padding: 1rem 3rem;
     border:3px solid white;
     color:white;
     background-color:rgba(0,0,0,0.7);
     border-radius: 1rem;
     font-family: var(--main-font);
-    font-size:2.5rem;
+    font-size: 2rem;
     text-align: inherit;
+   
+    
 }
 
 .weatherInfo__errorMsg {
@@ -144,13 +231,7 @@ width: 50rem;
     align-items: center;
 }
 
-.weartherInfo__modal__additionalInfomations {
-    margin-top: 2rem;
-    display: flex;
-    
-    justify-content: space-around;
-    align-items: center;
-}
+
 .weartherInfo__modal__additionalInfomations * img {
     width: 5rem;
 }
@@ -161,10 +242,7 @@ width: 50rem;
 .weartherInfo__modal__additionalInfomations__text__windDirection {
     margin:0rem;
 }
-.weartherInfo__modal__dailyForecast__avarageTemp {
 
-  width:initial;
-}
 .weartherInfo__modal__additionalInfomations__box__feelLike {
     transform: translate(-0.5rem);
 }
@@ -183,19 +261,7 @@ width: 50rem;
 
 
 
-.weartherInfo__modal__dailyForecast__day{
-    margin: 2rem 0;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
-.weartherInfo__modal__dailyForecast__day__iconAndDay{
-    
-    justify-content: space-between;
-    align-items: center;
-   
-}
 
 .weartherInfo__modal__forecastButton {
     
@@ -232,12 +298,6 @@ width: 50rem;
     flex-direction: column;
     justify-content: end;
     align-items: initial;
-
-    
-}
-
-.weartherInfo__modal__dailyForecast__day__temperatureChart :nth-child(1) {
-  padding-left: 0rem;
 }
 
 .weartherInfo__modal__additionalInfomations__box {
@@ -262,17 +322,7 @@ width: 50rem;
     background:transparent;
 }
 
-.footer__container {
-    position: absolute;
-    bottom:1rem;
-    margin-left: 87%;
-    transform: translate(-50%);
-    display:flex;
-    align-items: center;
-    background-color: rgba(0,0,0,0.7);
-    padding: 0.5rem;
-    border-radius: 10px;
-}
+
 footer p {
     margin-right: 1rem;
     color:white;
@@ -369,11 +419,6 @@ left: 21.1rem;
   animation-delay: -0.288s;
 }
 
-
-
-
-  
-  
   .hidden { 
     display:none;
 }
