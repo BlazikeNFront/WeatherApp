@@ -213,7 +213,7 @@ checkIfNeedsUpdate(typeOfWeatherInfo,location){
             }}
             return false
         }
-        //changeTextInForecastButton()
+       
 
 createCurrentWeatherInfo(data,input){
        this.domElements['additionalInformationBox'].innerHTML = '';

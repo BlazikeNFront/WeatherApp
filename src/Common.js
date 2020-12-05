@@ -63,7 +63,7 @@ export  class Common {
       element.style.setProperty('--app-width',`${newWidth}rem`);
   }
 
-  
+
 
   
 

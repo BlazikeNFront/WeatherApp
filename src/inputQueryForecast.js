@@ -6,13 +6,16 @@ export class ForecastButton extends Common {
         super();
         this.button= button;
         this.buttonEventListener(button);
-        this.getForecastButton =  false;
-        
-      
+        this.getForecastButton = false;
+    
     }
 
     changeTextInForecastButton(){
-      
+        
+        if(this.domElements['getForecastButton'].textContent === 'Get forecast for 3 days !'){
+            this.getForecastButton = false;
+        }
+
         if(!this.getForecastButton){
             this.domElements['getForecastButton'].textContent = 'Close forecast';
             this.getForecastButton = true
