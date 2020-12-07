@@ -79,12 +79,17 @@ import { Common } from '/src/Common.js';
         
 
         
-        iconAndDayBox['children'][1].textContent = this.days[Math.floor((this.data['date_epoch']/86400)+4)%7];
+        day.textContent = this.days[Math.floor((this.data['date_epoch']/86400)+4)%7];
+
+        if(day.textContent === 'Wednesday'){
+          iconAndDayBox.style.paddingLeft = '0';
+        }
+
         iconAndDayBox['children'][0].src = `icons/day/${iconNumber}.png`;
         averageTemperatureText.textContent = `Average temperature ${this.data['day']['avgtemp_c']}°C`;
 
 
-          const widthOfScreen = window.innerWidth;
+        const widthOfScreen = window.innerWidth;
          
 
           if(widthOfScreen >= 768){
@@ -98,24 +103,34 @@ import { Common } from '/src/Common.js';
               }
 
             
-
+              
             if(this.data['day']['avgtemp_c'] <-10){
            
             
-              box.children[1].style.transform='translate(0, -7rem)';
+              temperetureChartBoxContainer.style.transform='translate(0, -7rem)';
             }
             else if(this.data['day']['avgtemp_c'] <-7){
               
-              box.children[1].style.transform='translate(0, -4.5rem)';
+              temperetureChartBoxContainer.style.transform='translate(0, -4.5rem)';
             }
           else if(this.data['day']['avgtemp_c'] <-3){
               
-             box.children[1].style.transform='translate(0, -3.5rem)';
+            temperetureChartBoxContainer.style.transform='translate(0, -3.5rem)';
            }
           }
             
-        
-
+          if(this.data['day']['avgtemp_c'] >-40){
+            
+           setTimeout(()=>{ 
+             temperetureChartBoxContainer.scrollTo({
+              left: 0,
+              top: 100,
+          
+             })
+            }, 100)
+           
+          }
+          
 
         let chartHeightMulitplier = 2 ;
         const rawTemperatureChartHeight = Math.abs(this.data['day']['avgtemp_c'])
@@ -203,6 +218,7 @@ import { Common } from '/src/Common.js';
             box.children[1].appendChild(boxForChart)
     
         })
+        
      
         DOMElement.appendChild(box);   
        

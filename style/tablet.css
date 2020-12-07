@@ -7,6 +7,10 @@
     margin: 3rem;
     width: 76rem;
 }
+
+.weatherInfo {
+    height: 100%;
+}
 .weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
     width: 1.5rem;
 }
@@ -35,4 +39,5 @@
 }
 .footer__container {
     margin-left: 86%;
+    position: fixed;
 }
