@@ -1,362 +1,267 @@
 :root {
-    --main-font:'Rubik', sans-serif;
-    --app-width: 35rem;
-    --app-width-forecastData:36rem;
-    --app-height:79rem;
+  --main-font: "Rubik", sans-serif;
 }
-
-
 *,
 *::after,
 *::before {
-    font-family: var(--main-font); 
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    
-    
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--main-font);
 }
 
 html {
-    font-size: 62.5%;
-    color:white;
-    
+  font-size: 62.5%;
+  color: white;
 }
 
-.container {
-    
-    width: 90%;
-    margin:0 auto;
-}
-
-header {
-    margin-top:2rem;
-}
-
-h1 {
-    font-size: 3rem;
-    
-    text-align: center;
-}
-
-
-h3 {
-    font-size: 3rem;
-}
-
-.weatherInfo__input {
-    margin: 0.5rem 2rem;
-    font-size: 2rem;
-  
-}
-
-.weartherInfo__modal__dailyForecast__day {
-    margin:0;
-    width: 35rem;
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-   
-}
-
-
-.weartherInfo__modal__dailyForecast__avarageTemp {
-    width:7rem;
-}
-
-
- .weartherInfo__modal__dailyForecast__day__temperatureChart__container {
-        width: 23rem;
-        height:10rem;
-        display: flex;
-        align-items: flex-end;
-        justify-content: space-around;
-        font-size: 0.85rem;
-        text-align: center;
-        transform: scale(0.9);
-        overflow: scroll;
-} 
-.weartherInfo__modal__dailyForecast__day__temperatureChart :nth-child(1) {
-  padding-left: 52rem;
-}
-.weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
-    width: 1.5rem;
-    background-color: orange;
-    border-radius: 10px 10px 0 0;
-    transition-duration:2s;
-    margin: 0 0.5rem;
-    flex-direction: column;
-    justify-content: end;
-    align-items: initial;
-    
-    
-}
-.weartherInfo__modal__dailyForecast__day__iconAndDay {
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 1rem;
-}
-.weartherInfo__modal__dailyForecast__day__iconAndDay  img{
-    width: 4rem;
-
-}
-
-.weartherInfo__modal__additionalInfomations {
-    width: 85%;
-    margin-top: 2rem;
-    margin-left: 50%;
-    transform: translate(-50%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-
-.footer__container {
-    margin-left: 80%;
-    position: absolute;
-    bottom:1rem;
-    transform: translate(-50%);
-    display:flex;
-    align-items: center;
-    background-color: rgba(0,0,0,0.7);
-    padding: 0.5rem;
-    border-radius: 10px;
-}
-
-.footer__container img {
-    width:5rem;
-}
-
-
-
-
-
-
-
-h3 {
-  font-size: 4rem;
-    
-    text-align: center;
-}
-
-main {
-   
-  
-   display:flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-}
-
-.weatherInfo {
-  width:var(--app-width);
-  height:var(--app-height);
-  padding-bottom: 2rem;
-  border-radius: 10px;
+.weatherApp {
+  margin: 0 auto;
+  width: 90%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.weatherApp__header {
+  margin-top: 2rem;
+}
+
+.weatherApp__h1 {
+  font-size: 3rem;
   text-align: center;
-  background-color: rgba(0,0,0,0.8);
-  transition: all 1s ease-out ;
-  overflow: hidden; 
- 
-
 }
 
-
-
-
-.weatheInfo__inputBox {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
+.inputView__input {
+  width: 27rem;
+  height: 5rem;
+  border: 3px solid black;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 20px;
+  font-size: 2rem;
+  font-family: inherit;
+  text-align: center;
 }
 
-.weatherInfo__label {
-    margin:1.5rem;
-    font-size:2rem;
-    font-family: var(--main-font);
-    
+.resultView__day {
+  margin: 0;
+  width: 35rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.weatherInfo__inputBox__inputContainer {
-display: flex;
-align-items: center;
-justify-content: center;
-margin-left: 6rem;
+.resultView__avarageTemp {
+  width: 7rem;
 }
 
-.weatherInfo__input {
-    margin: 0.5rem 2rem;
-    padding: 1rem 3rem;
-    border:3px solid white;
-    color:white;
-    background-color:rgba(0,0,0,0.7);
-    border-radius: 1rem;
-    font-family: var(--main-font);
-    font-size: 2rem;
-    text-align: inherit;
-   
-    
+.resultView__temperatureChartContainer {
+  width: 23rem;
+  height: 10rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  font-size: 0.85rem;
+  text-align: center;
+  transform: scale(0.9);
+  overflow: scroll;
 }
 
-.weatherInfo__errorMsg {
-    font-family: var(--main-font);
-    color:red;
-    
+.resultView__chart {
+  width: 1.5rem;
+  background-color: orange;
+  border-radius: 10px 10px 0 0;
+  transition-duration: 2s;
+  margin: 0 0.7rem;
+  flex-direction: column;
+  justify-content: end;
+  align-items: initial;
 }
 
-.weatherInfo__button {
-    margin-top:1rem;
-    padding:1rem 0.5rem;
-    border:2px solid white;
-    color:white;
-    border-radius: 0.4rem;
-    background-color: transparent;
-    font-family: var(--main-font);
-    font-size:2rem;
-
+.resultView__iconAndDay {
+  padding-left: 1rem;
+  justify-content: space-between;
+  align-self: flex-end;
+  align-items: center;
+}
+.resultView__forecastDayIcon {
+  width: 5rem;
+}
+.resultView__additionalInfomations {
+  width: 85%;
+  margin-top: 2rem;
+  margin-left: 50%;
+  transform: translate(-50%);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.weartherInfo__modal {
-width: 50rem;
+.footer__container {
+  margin-left: 80%;
+  position: absolute;
+  bottom: 1rem;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem;
+  border-radius: 10px;
 }
 
-.weartherInfo__modal__mainInfo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.footer__container img {
+  width: 5rem;
 }
 
-
-.weartherInfo__modal__additionalInfomations * img {
-    width: 5rem;
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.weartherInfo__modal__additionalInfomations__text {
-    margin-top:1rem;
+.inputView {
+  padding-bottom: 2rem;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  transition: all 1s ease-out;
+  overflow: hidden;
 }
-.weartherInfo__modal__additionalInfomations__text__windDirection {
-    margin:0rem;
+.inputView__userInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+.inputView__label {
+  margin: 1.5rem;
+  font-size: 2rem;
+  font-family: var(--main-font);
 }
 
-.weartherInfo__modal__additionalInfomations__box__feelLike {
-    transform: translate(-0.5rem);
+.inputView__errorMsg {
+  font-family: var(--main-font);
+  color: red;
 }
-.weartherInfo__modal__buttonContainer {
+
+.inputView__button {
+  margin-top: 1rem;
+  padding: 1rem 0.5rem;
+  border: 2px solid white;
+  border-radius: 0.4rem;
+  background-color: transparent;
+  font-family: var(--main-font);
+  font-size: 2rem;
+  color: white;
+}
+
+.resultView {
+  width: 50rem;
+}
+
+.resultView__mainInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.weartherInfo__modal__dailyForecast {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top:2rem;
+.resultView__iconImg {
+  width: 5rem;
 }
 
-
-
-
-
-.weartherInfo__modal__forecastButton {
-    
-    margin-top:2rem;
-    
-    width:18rem;
-    padding: 1rem 0;
-    color:white;
-    border:3px solid white;
-    border-radius: 1rem;
-    background:transparent;
-
-}
-.weartherInfo__modal__dailyForecast__day__temperatureChart {
-    display:flex;
-    align-items: flex-end;
-    justify-content: space-around;
-   
-    font-size: 0.85rem;
-    text-align: center;
-    margin: 1rem;
-
-  
-    
+.resultView__additionalInfoText {
+  margin-top: 1rem;
 }
 
-
-.weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
-    background-color: orange;
-    border-radius: 10px 10px 0 0;
-    transition-duration:2s;
-    width:2rem;
-    margin: 0 0.5rem;
-    flex-direction: column;
-    justify-content: end;
-    align-items: initial;
+.resultView__feelLikeTempBox {
+  transform: translate(-0.5rem);
+}
+.resultView__dailyForecastWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.weartherInfo__modal__additionalInfomations__box {
-    text-align: center;
-    width: 5rem;
+.resultView__dailyForecast {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.weartherInfo__modal__additionalInfomations__box__hourInfo {
-    
-    color:salmon;
+.resultView__h3 {
+  font-size: 4rem;
+  text-align: center;
 }
-.weartherInfo__modal__additionalInfomations__box__tempInfo {
-    transform: translate(0px, -1rem);
-}
-
-.weartherInfo__modal__button {
-    margin-top: 8rem;
-    width:18rem;
-    padding: 1rem 0;
-    color:white;
-    border:3px solid white;
-    border-radius: 1rem;
-    background:transparent;
+.resultView__forecastButton {
+  margin-top: 2rem;
+  width: 18rem;
+  padding: 1rem 0;
+  border: 3px solid white;
+  border-radius: 1rem;
+  color: white;
+  background: transparent;
 }
 
+.resultView__temperatureChart {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.resultView__resultBox {
+  width: 5rem;
+  text-align: center;
+}
+.resultView__hourInfo {
+  color: salmon;
+}
+.resultView__tempInfo {
+  transform: translate(-0.2rem, -1rem);
+}
+
+.resultView__button {
+  margin-top: 8rem;
+  width: 18rem;
+  padding: 1rem 0;
+  color: white;
+  border: 3px solid white;
+  border-radius: 1rem;
+  background: transparent;
+}
 
 footer p {
-    margin-right: 1rem;
-    color:white;
+  margin-right: 1rem;
+  color: white;
 }
-footer a {
-  color:white
+.footer__a {
+  color: white;
 }
 
-
-
-
-
-.loader {
-display: none;
-position: relative;
-width: 80px;
-height: 80px;
-transform: scale(0.5);
-top: 13.5rem;
-left: 21.1rem;
- 
+.inputView__loader {
+  display: none;
+  position: relative;
   width: 80px;
   height: 80px;
-  transform:scale(0.5)
+  transform: scale(0.5);
+  top: 13.5rem;
+  left: 21.1rem;
+
+  width: 80px;
+  height: 80px;
+  transform: scale(0.5);
 }
-.loader div {
+.inputView__loaderElement {
   animation: loaderAnimation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   transform-origin: 40px 40px;
-  
 }
-.loader > div {
-  background-color: white;
-}
-.loader div:after {
+
+.inputView__loaderElement {
   content: " ";
   display: block;
   position: absolute;
@@ -366,75 +271,68 @@ left: 21.1rem;
   background: white;
   margin: -4px 0 0 -4px;
 }
-.loader div:nth-child(1) {
+.inputView__loaderElement:nth-child(1) {
   animation-delay: -0.036s;
 }
-.loader div:nth-child(1):after {
+.inputView__loaderElement:nth-child(1):after {
   top: 63px;
   left: 63px;
 }
-.loader div:nth-child(2) {
+.inputView__loaderElement:nth-child(2) {
   animation-delay: -0.072s;
 }
-.loader div:nth-child(2):after {
+.inputView__loaderElement:nth-child(2):after {
   top: 68px;
   left: 56px;
 }
-.loader div:nth-child(3) {
+.inputView__loaderElement:nth-child(3) {
   animation-delay: -0.108s;
 }
-.loader div:nth-child(3):after {
+.inputView__loaderElement:nth-child(3):after {
   top: 71px;
   left: 48px;
 }
-.loader div:nth-child(4) {
+.inputView__loaderElement:nth-child(4) {
   animation-delay: -0.144s;
 }
-.loader div:nth-child(4):after {
+.inputView__loaderElement:nth-child(4):after {
   top: 72px;
   left: 40px;
 }
-.loader div:nth-child(5) {
+.inputView__loaderElement:nth-child(5) {
   animation-delay: -0.18s;
 }
-.loader div:nth-child(5):after {
+.inputView__loaderElement:nth-child(5):after {
   top: 71px;
   left: 32px;
 }
-.loader div:nth-child(6) {
+.inputView__loaderElement:nth-child(6) {
   animation-delay: -0.216s;
 }
-.loader div:nth-child(6):after {
+.inputView__loaderElement:nth-child(6):after {
   top: 68px;
   left: 24px;
 }
-.loader div:nth-child(7) {
+.inputView__loaderElement:nth-child(7) {
   animation-delay: -0.252s;
 }
-.loader div:nth-child(7):after {
+.inputView__loaderElement:nth-child(7):after {
   top: 63px;
   left: 17px;
 }
-.loader div:nth-child(8) {
+.inputView__loaderElement:nth-child(8) {
   animation-delay: -0.288s;
 }
 
-  .hidden { 
-    display:none;
+.hidden {
+  display: none;
 }
 
-
-
-
-
-
-  @keyframes loaderAnimation {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+@keyframes loaderAnimation {
+  0% {
+    transform: rotate(0deg);
   }
-  
-
+  100% {
+    transform: rotate(360deg);
+  }
+}
