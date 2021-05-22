@@ -1,77 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    
-    <link href="/style/MoblieMedium.css" rel="stylesheet"  media="(min-width:1px)">
-    <link href="/style/mobileLarge.css" rel="stylesheet"  media="(min-width:376px)">
-    <link href="/style/tablet.css" rel="stylesheet"  media="(min-width:768px)">
-    <link  href="/style/style.css" rel='stylesheet' media="(min-width:1023px)">
-    
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet">
-    
-    <title>WeatherApp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="/style/MoblieMedium.css" rel="stylesheet">
+  <link href="/style/mobileLarge.css" rel="stylesheet" media="(min-width:376px)">
+  <link href="/style/tablet.css" rel="stylesheet" media="(min-width:768px)">
+  <link href="/style/desktop.css" rel='stylesheet' media="(min-width:1023px)">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;500&display=swap" rel="stylesheet">
+  <title>WeatherApp</title>
 </head>
+
 <body>
-    <div class="container">
-      <header>
-         <h1>Weather Checker</h1>
-      </header>
+  <div class="weatherApp">
+    <header class='weatherApp__header'>
+      <h1 class='weatherApp__h1'>Weather Checker</h1>
+    </header>
 
-      <main>
-        <div class="weatherInfo" data-jsLink="weatherInfo">
-          <div class="loader" data-jsLink="mainLoader"><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
-
-          
-              <form class="weatheInfo__inputBox" data-jsLink='inputView'>
-                    <label class='weatherInfo__label' for='cityInput'>Type your city</label>
-                    
-                    <input class='weatherInfo__input' id='cityInput' data-jsLink='input' >
-                   
-               
-                    <p class="weatherInfo__errorMsg" data-jsLink='inputErrorMsg'></p>
-                    <button class='weatherInfo__button' data-jsLink='buttonSubmit' type='submit'>Check Weather ! </button>
-                    <p class='weatherInfo__label'> or use geolocation</p>
-                    <button class='weatherInfo__button' data-jsLink='buttonGeolocation' type='button'> Geolocation </button>
-              </form>
-              
-            
+    <main class='main'>
+      <div class="inputView" data-jsLink="weatherInfo">
+        <div class="inputView__loader" data-jsLink="mainLoader">
+          <div class="inputView__loaderElement"></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <form class="inputView__inputBox" data-jsLink='inputView'>
+          <div class='inputView__userInputContainer'>
+            <label class='inputView__label' for='cityInput'>Type your city</label>
+            <input class='inputView__input' id='cityInput' data-jsLink='input'>
+          </div>
+          <p class="inputView__errorMsg" data-jsLink='inputErrorMsg'></p>
+          <button class='inputView__button' type='submit' data-jsLink='buttonSubmit'>Check Weather ! </button>
+          <p class='inputView__label'> or use geolocation</p>
+          <button class='inputView__button' type='button' data-jsLink='buttonGeolocation'> Geolocation </button>
+        </form>
         </h2>
-        <div class="weartherInfo__modal hidden" data-jsLink='modalView'>
-            <div class="weartherInfo__modal__mainInfo">
-                <h3 data-jsLink='cityName'></h3>
-                <p class="weartherInfo__modal__temperature" data-jsLink='mainInfoTemperature'>21C</p>
-                <img class="weartherInfo__modal__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
-                <p class="weartherInfo__modal__iconText" data-jsLink='weatherIconText'>21C</p>
-            </div>
-
-          <div class="weartherInfo__modal__additionalInfomations" data-jsLink='additionalInformationBox'>
-            </div>
-            <div class='weartherInfo__modal__buttonContainer'>
-          
-              <button class="weartherInfo__modal__forecastButton" data-jsLink="getForecastButton">Get forecast for 3 days !</button>
-
-              <div class="weartherInfo__modal__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
-              </div>
-
-              <button class="weartherInfo__modal__button" data-jsLink="backToSearchViewButton"> Check in another city ! </button>
-         </div>
+        <div class="resultView hidden" data-jsLink='modalView'>
+          <div class="resultView__mainInfo">
+            <h3 class='resultView__h3' data-jsLink='cityName'></h3>
+            <p class="resultView__temperature" data-jsLink='mainInfoTemperature'></p>
+            <img class="resultView__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
+            <p class="resultView__iconText" data-jsLink='weatherIconText'></p>
+          </div>
+          <div class="resultView__additionalInfomations" data-jsLink='additionalInformationBox'>
+          </div>
+          <div class='resultView__dailyForecastWrapper'>
+            <button class="resultView__forecastButton" data-jsLink="getForecastButton">Get forecast for 3 days
+              !</button>
+            <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
+          </div>
+          <button class="resultView__button" data-jsLink="backToSearchViewButton"> Check in another city !
+          </button>
         </div>
-        
-      </main>
+      </div>
+    </main>
+  </div>
+
+  <footer class='footer'>
+    <div class="footer__container">
+      <p class='footer__p'>Powered by <a class='footer__a' href="https://www.weatherapi.com/"
+          title="Free Weather API">WeatherAPI.com</a></p>
+      <img src='images\weatherapi_logo.png' alt='weatherAPI logo'>
     </div>
-     
-    
-      <footer>
-        <div class="footer__container">
-            <p>Powered by <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a></p>
-            <img src='images\weatherapi_logo.png' alt='weatherAPI logo'>
-        </div>
-      </footer>
-   
-
-    <script src='src/app.js' type='module' defer></script>
+  </footer>
+  <script src='src/app.js' type='module' defer></script>
 </body>
+
 </html>

@@ -1,0 +1,92 @@
+header {
+  margin-top: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+
+  text-align: center;
+}
+
+h3 {
+  font-size: 4rem;
+
+  text-align: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputView {
+  width: var(--app-width);
+  padding-bottom: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  transition: all 1s ease-out;
+  overflow: hidden;
+}
+
+.inputView__label {
+  margin: 1.5rem;
+  font-size: 2rem;
+  font-family: var(--main-font);
+}
+
+.weatherInfo__inputBox__inputContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6rem;
+}
+
+.inputView__input {
+  margin: 1rem 6rem;
+  padding: 1rem 3rem;
+  border: 3px solid white;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 1rem;
+  font-family: var(--main-font);
+  font-size: 2.5rem;
+  text-align: inherit;
+}
+.resultView__icon {
+  width: 10rem;
+}
+.resultView__day {
+  margin: 1rem 0;
+  width: 95rem;
+}
+.resultView__forecastDayIcon {
+  width: 7rem;
+}
+.resultView__chart {
+  margin: 0 1rem;
+}
+.resultView__additionalInfomations {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.footer__container {
+  position: fixed;
+  bottom: 1rem;
+  margin-left: 87%;
+  transform: translate(-50%);
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem;
+  border-radius: 10px;
+}

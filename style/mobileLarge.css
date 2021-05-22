@@ -1,73 +1,22 @@
-:root {
-    --app-width:37rem;
-    --app-width-forecastData:41rem;
-}
-
 h3 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
-.weatherInfo__input {
-    margin: 0.5rem 2rem;
-    font-size: 2rem;
-  
+.inputView__input {
+  margin: 0.5rem 2rem;
+  font-size: 2rem;
 }
 
-.weartherInfo__modal__dailyForecast__day {
-    width:57rem;
-   
-}
-
-
-.weartherInfo__modal__dailyForecast__avarageTemp {
-    width:7rem;
-}
-
-.weartherInfo__modal__dailyForecast__day {
-    margin:0;
-    width: 40rem;
-}
- .weartherInfo__modal__dailyForecast__day__temperatureChart__container {
-    
-        width: 40rem;
-        height:10rem;
-        display: flex;
-
-        align-items: flex-end;
-        justify-content: space-around;
-        font-size: 0.85rem;
-        text-align: center;
-        transform: scale(0.9);
-        overflow: scroll;
-} 
-
-.weartherInfo__modal__dailyForecast__day__temperatureChart__chart {
-    width: 1.5rem;
-    
-}
-
-.weartherInfo__modal__dailyForecast__day__temperatureChart :nth-child(1) {
-    padding-left: 35rem;
-  }
-.weartherInfo__modal__dailyForecast__day__iconAndDay {
-  
-    padding-left: 1rem;
-}
-.weartherInfo__modal__dailyForecast__day__iconAndDay  img{
-    width: 4rem;
-
-}
-
-.weartherInfo__modal__additionalInfomations {
-    width: 85%;
-    margin-left: 50%;
-    transform: translate(-50%);
+.resultView__additionalInfomations {
+  width: 85%;
+  margin-left: 50%;
+  transform: translate(-50%);
 }
 
 .footer__container {
-    margin-left: 82%;
+  margin-left: 82%;
 }
 
 .footer__container img {
-    width:5rem;
+  width: 5rem;
 }
