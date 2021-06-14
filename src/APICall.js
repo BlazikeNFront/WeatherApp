@@ -1,23 +1,13 @@
 import { Common } from "/src/Common.js";
-import { MainInfoCard } from "/src/mainInfoCard.js";
-import { DailyForecast } from "/src/dailyForecast.js";
+import { APIKey } from "../privates.js";
+import { MainCardInfo } from "./mainInfoCard.js";
+import { DailyForecast } from "./dailyForecast.js";
 
 export class APICall extends Common {
   constructor(location, typeOfCall) {
     super();
-
     this.location = location;
     this.typeOfCall = typeOfCall;
-
-    this.daysOfWeek = {
-      0: "Sunday",
-      1: "Monday",
-      2: "Tuesday",
-      3: "Wednesday",
-      4: "Thursday",
-      5: "Friday",
-      6: "Saturday",
-    };
 
     switch (typeOfCall) {
       case "current":
@@ -27,7 +17,7 @@ export class APICall extends Common {
         this.geolocationCall();
         break;
       case "forecast":
-        this.forecastCAll(this.location);
+        this.forecastCall(this.location);
         break;
     }
   }
@@ -41,7 +31,7 @@ export class APICall extends Common {
     }
   }
 
-  forecastCAll(inputValue) {
+  forecastCall(inputValue) {
     //Free API users are able to get forcast for maximuim 3 days...
     if (!this.checkIfNeedsUpdate("forecastWeather", inputValue)) {
       const data = JSON.parse(localStorage.getItem("forecastWeather"));
@@ -50,7 +40,7 @@ export class APICall extends Common {
     }
 
     fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=66667245d6d048b2ad9152824202510&q=${inputValue}&days=3`
+      `http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=${inputValue}&days=3`
     )
       .then((data) => {
         if (data.ok) {
@@ -64,19 +54,20 @@ export class APICall extends Common {
       });
   }
 
-  currentWeatherCall(input) {
+  currentWeatherCall(locationInput) {
     this.loader();
-    if (!this.checkIfNeedsUpdate("currentWeather", input.value)) {
+
+    if (!this.checkIfNeedsUpdate("currentWeather", locationInput.value)) {
       const data = JSON.parse(localStorage.getItem("currentWeather"));
-      this.createCurrentWeatherInfo(data, input);
+      this.createCurrentWeatherInfo(data, locationInput);
       return;
     }
     this.domElements["additionalInformationBox"].innerHTML = "";
-    this.fetchCurrentFunction(
-      "http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q",
-      input
+    this.fetchDataFromAPI(
+      `http://api.weatherapi.com/v1/current.json?key=${APIKey}&q`,
+      locationInput
     );
-    input.value = "";
+    locationInput.value = "";
   }
 
   geolocationCall() {
@@ -85,15 +76,15 @@ export class APICall extends Common {
       const latitude = coordinates.coords.latitude;
       const longitude = coordinates.coords.longitude;
       this.domElements["additionalInformationBox"].innerHTML = "";
-      this.fetchCurrentFunction(
-        `http://api.weatherapi.com/v1/current.json?key=66667245d6d048b2ad9152824202510&q=${
+      this.fetchDataFromAPI(
+        `http://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${
           latitude + "," + longitude
         }`
       );
     });
   }
 
-  fetchCurrentFunction(url, input) {
+  fetchDataFromAPI(url, input) {
     let fetchUrl;
     if (input) {
       fetchUrl = `${url}=${input.value}`;
@@ -129,19 +120,19 @@ export class APICall extends Common {
           "mainInfoTemperature"
         ].textContent = `${data["current"]["temp_c"]}°C`;
 
-        new MainInfoCard(
+        new MainCardInfo(
           this.domElements["additionalInformationBox"],
           "humidity",
           "icons/drop.svg",
           `${data["current"]["humidity"]}%`
         );
-        new MainInfoCard(
+        new MainCardInfo(
           this.domElements["additionalInformationBox"],
           "feelLike",
           "icons/hot.svg",
           `${data["current"]["feelslike_c"]}°C`
         );
-        new MainInfoCard(
+        new MainCardInfo(
           this.domElements["additionalInformationBox"],
           "wind",
           "icons/wind.svg",
@@ -180,7 +171,6 @@ export class APICall extends Common {
     }
     if (typeOfWeatherInfo === "forecastWeather") {
       if (currentDate - dateOfLastUpdate - 1 > 0) {
-        console.log("forecast FETCH ON");
         return true;
       }
     }
@@ -217,19 +207,19 @@ export class APICall extends Common {
       "mainInfoTemperature"
     ].textContent = `${data["current"]["temp_c"]}°C`;
 
-    new MainInfoCard(
+    new MainCardInfo(
       this.domElements["additionalInformationBox"],
       "humidity",
       "icons/drop.svg",
       `${data["current"]["humidity"]}%`
     );
-    new MainInfoCard(
+    new MainCardInfo(
       this.domElements["additionalInformationBox"],
       "feelLike",
       "icons/hot.svg",
       `${data["current"]["feelslike_c"]}°C`
     );
-    new MainInfoCard(
+    new MainCardInfo(
       this.domElements["additionalInformationBox"],
       "wind",
       "icons/wind.svg",
@@ -255,16 +245,6 @@ export class APICall extends Common {
       new DailyForecast(this.domElements["dailyForecastModule"], day);
     });
     this.changeVisibility(this.domElements["dailyForecastModule"]);
-
-    setTimeout(() => {
-      const newWidth = window
-        .getComputedStyle(document.body)
-        .getPropertyValue("--app-width-forecastData")
-        .split("rem")[0];
-
-      const elementToChangeWidth = this.domElements["weatherInfo"];
-      this.changeWidth(newWidth, elementToChangeWidth);
-    }, 100);
 
     data.dateOfUpdate =
       String(new Date().getMonth()) + String(new Date().getDate());

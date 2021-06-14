@@ -16,13 +16,12 @@ html {
 }
 
 .weatherApp {
-  margin: 0 auto;
-  width: 90%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  margin: 5rem auto;
+  width: 37rem;
+  min-height: 30rem;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  overflow: hidden;
 }
 .weatherApp__header {
   margin-top: 2rem;
@@ -45,8 +44,8 @@ html {
 }
 
 .resultView__day {
-  margin: 0;
-  width: 35rem;
+  margin: 2rem auto;
+  width: 36rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,26 +56,26 @@ html {
 }
 
 .resultView__temperatureChartContainer {
-  width: 23rem;
-  height: 10rem;
   display: flex;
   align-items: flex-end;
-  justify-content: space-around;
-  font-size: 0.85rem;
-  text-align: center;
-  transform: scale(0.9);
   overflow: scroll;
+}
+.singleChartContainer {
+  width: 100%;
+  height: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .resultView__chart {
+  margin: 0 1.5rem;
   width: 1.5rem;
   background-color: orange;
   border-radius: 10px 10px 0 0;
+
   transition-duration: 2s;
-  margin: 0 0.7rem;
-  flex-direction: column;
-  justify-content: end;
-  align-items: initial;
 }
 
 .resultView__iconAndDay {
@@ -88,33 +87,18 @@ html {
 .resultView__forecastDayIcon {
   width: 5rem;
 }
-.resultView__additionalInfomations {
-  width: 85%;
+.mainInfo__additionalInfomations {
   margin-top: 2rem;
   margin-left: 50%;
-  transform: translate(-50%);
+  width: 85%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-}
-
-.footer__container {
-  margin-left: 80%;
-  position: absolute;
-  bottom: 1rem;
   transform: translate(-50%);
-  display: flex;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.7);
-  padding: 0.5rem;
-  border-radius: 10px;
-}
-
-.footer__container img {
-  width: 5rem;
 }
 
 .main {
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -163,24 +147,33 @@ html {
   width: 50rem;
 }
 
-.resultView__mainInfo {
+.mainInfo {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
-.resultView__iconImg {
-  width: 5rem;
+.mainInfo__temperature {
+  font-size: 2.5rem;
+}
+.mainInfo__icon {
+  width: 10rem;
+}
+.mainInfo__iconText {
+  font-size: 2.5rem;
 }
 
-.resultView__additionalInfoText {
+.mainInfo__additionalInfoParagraph {
   margin-top: 1rem;
+  font-size: 1.2rem;
 }
 
 .resultView__feelLikeTempBox {
   transform: translate(-0.5rem);
 }
-.resultView__dailyForecastWrapper {
+.mainInfo__additionalInfoIcon {
+  width: 7rem;
+}
+.dailyForecast {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -192,7 +185,7 @@ html {
   flex-direction: column;
   align-items: center;
 }
-.resultView__h3 {
+.mainInfo__h3 {
   font-size: 4rem;
   text-align: center;
 }
@@ -214,15 +207,19 @@ html {
   text-align: center;
 }
 
-.resultView__resultBox {
-  width: 5rem;
+.mainInfo__additionalResultBox {
+  width: 10rem;
   text-align: center;
 }
 .resultView__hourInfo {
   color: salmon;
+  transition-duration: 2s;
 }
 .resultView__tempInfo {
-  transform: translate(-0.2rem, -1rem);
+  margin-bottom: 0.5rem;
+  width: 114%;
+  font-size: 1.1rem;
+  text-align: center;
 }
 
 .resultView__button {
@@ -234,7 +231,17 @@ html {
   border-radius: 1rem;
   background: transparent;
 }
+.footer__container {
+  padding: 0.5rem;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+}
 
+.footer__container img {
+  width: 5rem;
+}
 footer p {
   margin-right: 1rem;
   color: white;
@@ -246,12 +253,8 @@ footer p {
 .inputView__loader {
   display: none;
   position: relative;
-  width: 80px;
-  height: 80px;
-  transform: scale(0.5);
   top: 13.5rem;
   left: 21.1rem;
-
   width: 80px;
   height: 80px;
   transform: scale(0.5);
@@ -262,14 +265,14 @@ footer p {
 }
 
 .inputView__loaderElement {
-  content: " ";
+  content: "";
   display: block;
   position: absolute;
+  margin: -4px 0 0 -4px;
   width: 7px;
   height: 7px;
   border-radius: 50%;
   background: white;
-  margin: -4px 0 0 -4px;
 }
 .inputView__loaderElement:nth-child(1) {
   animation-delay: -0.036s;

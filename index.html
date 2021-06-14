@@ -17,7 +17,6 @@
     <header class='weatherApp__header'>
       <h1 class='weatherApp__h1'>Weather Checker</h1>
     </header>
-
     <main class='main'>
       <div class="inputView" data-jsLink="weatherInfo">
         <div class="inputView__loader" data-jsLink="mainLoader">
@@ -41,15 +40,15 @@
         </form>
         </h2>
         <div class="resultView hidden" data-jsLink='modalView'>
-          <div class="resultView__mainInfo">
-            <h3 class='resultView__h3' data-jsLink='cityName'></h3>
-            <p class="resultView__temperature" data-jsLink='mainInfoTemperature'></p>
-            <img class="resultView__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
-            <p class="resultView__iconText" data-jsLink='weatherIconText'></p>
+          <div class="mainInfo">
+            <h3 class='mainInfo__h3' data-jsLink='cityName'></h3>
+            <p class="mainInfo__temperature" data-jsLink='mainInfoTemperature'></p>
+            <img class="mainInfo__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
+            <p class="mainInfo__iconText" data-jsLink='weatherIconText'></p>
           </div>
-          <div class="resultView__additionalInfomations" data-jsLink='additionalInformationBox'>
+          <div class="mainInfo__additionalInfomations" data-jsLink='additionalInformationBox'>
           </div>
-          <div class='resultView__dailyForecastWrapper'>
+          <div class='dailyForecast'>
             <button class="resultView__forecastButton" data-jsLink="getForecastButton">Get forecast for 3 days
               !</button>
             <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>

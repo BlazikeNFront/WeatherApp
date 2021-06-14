@@ -1,7 +1,7 @@
 import { Common } from "/src/Common.js";
 
-export class MainInfoCard extends Common {
-  constructor(DOMParent, infoType, iconSrc, value, additionalInfo) {
+export class MainCardInfo extends Common {
+  constructor(DOMElement, infoType, iconSrc, value, additionalInfo) {
     super();
     this.infoType = infoType;
     this.iconSrc = iconSrc;
@@ -10,77 +10,92 @@ export class MainInfoCard extends Common {
 
     switch (this.infoType) {
       case "humidity":
-        this.humidity(DOMParent);
+        this.humidity(DOMElement);
         break;
       case "feelLike":
-        this.feelLikeTemperature(DOMParent);
+        this.feelLikeTemperature(DOMElement);
         break;
       case "wind":
-        this.wind(DOMParent);
+        this.wind(DOMElement);
         break;
     }
   }
 
-  humidity(domParent) {
+  humidity(DOMElement) {
     const div = document.createElement("div");
-    div.classList.add("resultView__resultBox");
+    div.classList.add("mainInfo__additionalResultBox");
+
     const icon = document.createElement("img");
-    icon.classList.add("resultView__iconImg");
+    icon.classList.add("mainInfo__additionalInfoIcon");
     icon.src = this.iconSrc;
     icon.alt = "humidity Icon";
 
     const p = document.createElement("p");
-    p.classList.add("resultView__additionalInfoText");
+    p.classList.add("mainInfo__additionalInfoParagraph");
     p.textContent = `Humidity: ${this.value}`;
 
     div.appendChild(icon);
     div.appendChild(p);
-
-    domParent.appendChild(div);
+    DOMElement.appendChild(div);
   }
 
-  feelLikeTemperature(domParent) {
+  feelLikeTemperature(DOMElement) {
     const div = document.createElement("div");
     div.classList.add("resultView__resultBox");
     div.classList.add("resultView__feelLikeTempBox");
+
     const icon = document.createElement("img");
-    icon.classList.add("resultView__iconImg");
+    icon.classList.add("mainInfo__additionalInfoIcon");
     icon.src = this.iconSrc;
     icon.alt = "feel like icon";
 
     const p = document.createElement("p");
-    p.classList.add("resultView__additionalInfoText");
+    p.classList.add("mainInfo__additionalInfoParagraph");
     p.textContent = `Feel like: ${this.value}`;
 
     div.appendChild(icon);
     div.appendChild(p);
 
-    domParent.appendChild(div);
+    DOMElement.appendChild(div);
   }
 
-  wind(domParent) {
+  wind(DOMElement) {
     const div = document.createElement("div");
-    div.classList.add("resultView__resultBox");
+    div.classList.add("mainInfo__additionalResultBox");
 
     const icon = document.createElement("img");
     icon.src = this.iconSrc;
     icon.alt = "Wind Icon";
-    icon.classList.add("resultView__iconImg");
+    icon.classList.add("mainInfo__additionalInfoIcon");
+
     const p = document.createElement("p");
-    p.classList.add("resultView__additionalInfoText");
+    p.classList.add("mainInfo__additionalInfoParagraph");
     p.textContent = `${this.value}`;
 
-    let windDirectionShortCut = this.additionalInfo["windDirection"];
-    // API gives wind direction as 16 point compass - e.g.: NSW - code below translates it into maxiumum 8 point -e.g. NSW into NW;
+    const windDirection = this.createShortWindDescription(
+      this.additionalInfo["windDirection"]
+    );
+    const windDirectionParagraph = document.createElement("p");
+    windDirectionParagraph.classList.add("mainInfo__additionalInfoParagraph");
+    windDirectionParagraph.textContent = ` Wind direction: ${windDirection}`;
 
-    if (windDirectionShortCut.length === 3) {
-      const array = windDirectionShortCut.split("");
+    div.appendChild(icon);
+    div.appendChild(windDirectionParagraph);
+
+    DOMElement.appendChild(div);
+  }
+  createShortWindDescription(windDataFromAPI) {
+    // API gives wind direction as 16 point compass - e.g.: NSW - code below translates it into maxiumum 8 point --- NSW into NW;
+    // API gives wind direction as 16 point compass - e.g.: NSW - code below translates it into maxiumum 8 point --- NSW into NW;
+    // API gives wind direction as 16 point compass - e.g.: NSW - code below translates it into maxiumum 8 point --- NSW into NW;
+    if (windDataFromAPI.length === 3) {
+      const array = windDataFromAPI.split("");
       if (array[0] === "N" || array[0] === "S") {
         array.splice(array[1], 1);
-        windDirectionShortCut = array.join("");
+        windDataFromAPI = array.join("");
       } else {
         array.splice(array[0], 1);
-        windDirectionShortCut = array.join("");
+        windDataFromAPI = array.join("");
       }
     }
 
@@ -94,15 +109,6 @@ export class MainInfoCard extends Common {
       SE: "South-East",
       SW: "South-West",
     };
-
-    const windDirection = windDirectionFull[`${windDirectionShortCut}`];
-    const additionInfo = document.createElement("p");
-    p.classList.add("resultView__additionalInfoText");
-    p.textContent = ` Wind direction: ${windDirection}`;
-
-    div.appendChild(icon);
-    div.appendChild(p);
-
-    domParent.appendChild(div);
+    return windDirectionFull[`${windDataFromAPI}`];
   }
 }

@@ -12,7 +12,6 @@ export class BackButton extends Common {
       this.domElements["weatherInfo"],
       this.originalAppWidth
     );
-    this.forecast;
   }
 
   buttonEventListener() {

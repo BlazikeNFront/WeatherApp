@@ -11,7 +11,6 @@ export class UserInput extends Common {
   inputEventListener(element) {
     element.addEventListener("click", (event) => {
       event.preventDefault();
-
       new APICall(this.domElements["input"], "current");
     });
   }
