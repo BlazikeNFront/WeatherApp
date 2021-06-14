@@ -1,0 +1,167 @@
+[33mcommit c420f580319dee2906e2f09900a37a1dde49f6c6[m[33m ([m[1;36mHEAD -> [m[1;32mdevelop[m[33m, [m[1;31morigin/develop[m[33m)[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sat May 22 20:02:53 2021 +0200
+
+    styles refactor
+
+[33mcommit 96538b02ba2cd08294ab6b5af19f944d202a3797[m
+Author: unknown <damian9691@wp.pl>
+Date:   Mon Dec 7 18:49:51 2020 +0100
+
+    styles adjustemnts
+
+[33mcommit e960c28e997e10ca8f3a85f6f50b2f534d54fec5[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sat Dec 5 23:18:03 2020 +0100
+
+    mobile style adjustments
+
+[33mcommit 41b2d2e62d5ce9b1c2ad1e8ff7858978aec28f7d[m
+Author: unknown <damian9691@wp.pl>
+Date:   Fri Dec 4 20:17:37 2020 +0100
+
+    Added mobileL forecast
+
+[33mcommit 9d19ae744f29d6523e7d327e62ca6b4509fa7005[m
+Author: unknown <damian9691@wp.pl>
+Date:   Thu Dec 3 20:27:01 2020 +0100
+
+    Added media query for tablet and started working on mobiles view
+
+[33mcommit 5cec7125a562e8ddac3b017bfad4abd8604d4585[m
+Author: unknown <damian9691@wp.pl>
+Date:   Wed Dec 2 20:09:47 2020 +0100
+
+    JS fixes ... only css wiht media queries left???
+
+[33mcommit 7b354a04089cb03b5dd4d013392e82f1f119a979[m
+Author: unknown <damian9691@wp.pl>
+Date:   Tue Dec 1 20:04:17 2020 +0100
+
+    fixed css on firefox and minor JS bug(weather information reset)
+
+[33mcommit c790aee6bd754a80238bcdba9f3b396bf3a849df[m
+Author: unknown <damian9691@wp.pl>
+Date:   Mon Nov 30 20:00:25 2020 +0100
+
+    Added cached Data for weathers in localStorage
+
+[33mcommit 4d9c1065bb73da1d2b124224700766b1817c9140[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sat Nov 21 19:12:10 2020 +0100
+
+    Added transitions between defualt and modal view
+
+[33mcommit f3d48ab8c4527d673972dddcd9a7745f1c3374d1[m
+Author: unknown <damian9691@wp.pl>
+Date:   Fri Nov 20 20:12:42 2020 +0100
+
+    started to  work on styling
+
+[33mcommit deb1630d3502fde95b4a9d3511338b8898e50ba9[m
+Author: unknown <damian9691@wp.pl>
+Date:   Wed Nov 18 20:47:11 2020 +0100
+
+    work perndin on  chart animations property
+
+[33mcommit 29cfe239fc45d76c99a110d74a7fc40a64a16901[m
+Author: unknown <damian9691@wp.pl>
+Date:   Tue Nov 17 20:55:32 2020 +0100
+
+    Added new fetch method to in APICall class to avoid code duplicates
+
+[33mcommit 7019354c6c9c178b5186aeaeb9463962bc7486ab[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sat Nov 14 19:36:49 2020 +0100
+
+    Added functional JS code to create forecast module, instead of using hardcoded HTML boxes
+
+[33mcommit b89c9f2285fd8e73d4c8ea2701a7ef6cb51cf17c[m
+Author: unknown <damian9691@wp.pl>
+Date:   Fri Nov 13 19:44:54 2020 +0100
+
+    Addes logic to class dailyForecast
+
+[33mcommit 072c35e657ae02e312f9afc590638e322690d45f[m
+Author: unknown <damian9691@wp.pl>
+Date:   Wed Nov 11 19:50:01 2020 +0100
+
+    Added additional info in JS class
+
+[33mcommit 534bf6f761d9f3bc974a83e907e0758d92f29b81[m
+Author: unknown <damian9691@wp.pl>
+Date:   Tue Nov 10 20:18:16 2020 +0100
+
+    Added new class for additional info output in JS instead of html
+
+[33mcommit 02c0aa66f4e72b2866afff7993033f69141bad0d[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sun Nov 8 19:40:12 2020 +0100
+
+    Added hours to charts
+
+[33mcommit 7e07878c85b39b8604a6afbd19ae9d527a87ae6d[m
+Author: unknown <damian9691@wp.pl>
+Date:   Wed Nov 4 20:16:15 2020 +0100
+
+    Added logic for temperature below 0
+
+[33mcommit ff768ac9f48ee6a8552c3a9b1e83206442063fc2[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sun Nov 1 18:41:25 2020 +0100
+
+    css adjustments
+
+[33mcommit f7950db58216a60d0bb1dbeec0c8081394affe97[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sat Oct 31 18:52:17 2020 +0100
+
+    Fixed bug with forecast view and added APICall class
+
+[33mcommit 9370354fcb93b960c03b499cffd6a8133cc48e95[m
+Author: unknown <damian9691@wp.pl>
+Date:   Fri Oct 30 18:51:22 2020 +0100
+
+    Added Geolocation API option
+
+[33mcommit b803270d919c17474ee60e4bee9472259eb31d81[m
+Author: unknown <damian9691@wp.pl>
+Date:   Wed Oct 28 20:15:13 2020 +0100
+
+    Added Charts logic and basic styles
+
+[33mcommit aca2ec7181f60456d3aaad1be12279fff548d416[m
+Author: unknown <damian9691@wp.pl>
+Date:   Tue Oct 27 19:20:50 2020 +0100
+
+    Added logic to forecast option(need to rework styles)
+
+[33mcommit 7aca863964c35b3918863f6541d32d1efde40139[m
+Author: unknown <damian9691@wp.pl>
+Date:   Mon Oct 26 18:18:15 2020 +0100
+
+    Added new classes that handles APIs query and switches views
+
+[33mcommit 2f71236f0d3301ab802dca1152a2faa8f7aa5d18[m
+Author: unknown <damian9691@wp.pl>
+Date:   Sun Oct 25 18:58:50 2020 +0100
+
+    Added Common,inputQuery,backButton
+
+[33mcommit a463a91715b43d6fcd5a618db4487878551ad9a3[m
+Author: unknown <damian9691@wp.pl>
+Date:   Fri Oct 23 20:03:52 2020 +0200
+
+    Added more advantage template and basic css
+
+[33mcommit 46125f0dafd981de5a8c40d5e4a434a33a910c38[m
+Author: unknown <damian9691@wp.pl>
+Date:   Thu Oct 22 21:19:33 2020 +0200
+
+    Basic template for project
+
+[33mcommit c2186f0ef60182c38eab8f8d141397d1b90284ac[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Damian <67591714+BlazikeNFront@users.noreply.github.com>
+Date:   Thu Oct 22 20:22:47 2020 +0200
+
+    Initial commit

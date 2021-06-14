@@ -51,7 +51,6 @@ export class DailyForecast extends Common {
     averageTemperatureText.classList.add("resultView__avarageTemp");
 
     box.appendChild(iconAndDayBox);
-
     box.appendChild(temperetureChartBoxContainer);
     box.appendChild(averageTemperatureText);
 
@@ -95,9 +94,17 @@ export class DailyForecast extends Common {
     } else if (rawTemperatureChartHeight > 30) {
       chartHeightMulitplier = 3;
     }
+    const evenHours = this.data["hour"].filter((hour, index) => {
+      if (index % 2 === 0) {
+        return true;
+      }
+      return false;
+    });
 
-    this.data["hour"].map((hour, hourindex) => {
+    evenHours.map((hour) => {
       const boxForChart = document.createElement("div");
+      boxForChart.classList.add("singleChartContainer");
+
       const chart = document.createElement("div");
       const tempInfo = document.createElement("p");
       const hourText = document.createElement("p");
@@ -106,13 +113,9 @@ export class DailyForecast extends Common {
 
       let temperatureChartHeight = hour["temp_c"]; // this constant is widely used in this map function , not only as temperatur chart height attribute
 
-      hourText.style.transitionDuration = "2s";
-
       if (temperatureChartHeight >= 0) {
         setTimeout(() => {
-          hourText.style.transform = `rotate(-90deg) translate(-${
-            temperatureChartHeight / chartHeightMulitplier + 0.2
-          }rem,0)`;
+          hourText.style.transform = `rotate(-90deg) translate(-1rem)`;
         }, 100);
         tempInfo.textContent = `${temperatureChartHeight.toFixed(1)}°C`;
       }
@@ -124,31 +127,36 @@ export class DailyForecast extends Common {
         chart.style.transform = `translate(0,${
           temperatureChartHeight / chartHeightMulitplier
         }rem`;
-        tempInfo.style.transform = `translate(0,${
-          temperatureChartHeight / chartHeightMulitplier + 0.2
-        }rem`;
+
         chart.style.backgroundColor = "#37ede4";
         chart.style.borderRadius = "0 0 10px 10px";
         chart.classList.add("below-0-chartAnimation");
         setTimeout(() => {
-          hourText.style.transform = `rotate(-90deg) translate(2.7rem, 0)`;
+          hourText.style.transform = `rotate(-90deg)`;
         }, 100);
         tempInfo.textContent = `-${temperatureChartHeight.toFixed(1)}°C`;
       }
 
       chart.style.height = 0;
       chart.style.transition = "2s";
+      const chartHeight = temperatureChartHeight / chartHeightMulitplier;
+      //set wrapper height to the highest chart value
+      chartHeight < 7
+        ? (boxForChart.style.height = `10rem`)
+        : (boxForChart.style.height = `${chartHeight + 3}rem`);
+
       setTimeout(() => {
-        chart.style.height = `${
-          temperatureChartHeight / chartHeightMulitplier
-        }rem`;
+        chart.style.height = `${chartHeight}rem`;
       }, 100);
-      hourText.textContent = `${hourindex}:00`;
-      chart.appendChild(tempInfo);
-      chart.appendChild(hourText);
+      hourText.textContent = hour.time.split(" ")[1];
+
+      boxForChart.appendChild(tempInfo);
       boxForChart.appendChild(chart);
-      box.children[1].appendChild(boxForChart);
+      boxForChart.appendChild(hourText);
+
+      temperetureChartBoxContainer.appendChild(boxForChart);
     });
+
     DOMElement.appendChild(box);
   }
 }

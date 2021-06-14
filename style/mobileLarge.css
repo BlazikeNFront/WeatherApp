@@ -8,8 +8,8 @@ h3 {
 }
 
 .resultView__additionalInfomations {
-  width: 85%;
   margin-left: 50%;
+  width: 85%;
   transform: translate(-50%);
 }
 
