@@ -19,19 +19,36 @@ html {
   margin: 5rem auto;
   width: 37rem;
   min-height: 30rem;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 20px;
   overflow: hidden;
 }
-.weatherApp__header {
+.header {
   margin-top: 2rem;
 }
 
-.weatherApp__h1 {
+.header__h1 {
   font-size: 3rem;
   text-align: center;
 }
-
+.main {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.inputView {
+  margin-bottom: 2rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  transition: all 1s ease-out;
+  overflow: hidden;
+}
 .inputView__input {
   width: 27rem;
   height: 5rem;
@@ -43,80 +60,6 @@ html {
   text-align: center;
 }
 
-.resultView__day {
-  margin: 2rem auto;
-  width: 36rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.resultView__avarageTemp {
-  width: 7rem;
-}
-
-.resultView__temperatureChartContainer {
-  display: flex;
-  align-items: flex-end;
-  overflow: scroll;
-}
-.singleChartContainer {
-  width: 100%;
-  height: 22rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.resultView__chart {
-  margin: 0 1.5rem;
-  width: 1.5rem;
-  background-color: orange;
-  border-radius: 10px 10px 0 0;
-
-  transition-duration: 2s;
-}
-
-.resultView__iconAndDay {
-  padding-left: 1rem;
-  justify-content: space-between;
-  align-self: flex-end;
-  align-items: center;
-}
-.resultView__forecastDayIcon {
-  width: 5rem;
-}
-.mainInfo__additionalInfomations {
-  margin-top: 2rem;
-  margin-left: 50%;
-  width: 85%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  transform: translate(-50%);
-}
-
-.main {
-  margin-top: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.inputView {
-  padding-bottom: 2rem;
-  border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.8);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  text-align: center;
-  transition: all 1s ease-out;
-  overflow: hidden;
-}
 .inputView__userInputContainer {
   display: flex;
   flex-direction: column;
@@ -152,6 +95,10 @@ html {
   flex-direction: column;
   align-items: center;
 }
+.mainInfo__h3 {
+  font-size: 4rem;
+  text-align: center;
+}
 .mainInfo__temperature {
   font-size: 2.5rem;
 }
@@ -161,35 +108,90 @@ html {
 .mainInfo__iconText {
   font-size: 2.5rem;
 }
-
+.mainInfo__additionalInfomations {
+  margin-top: 2rem;
+  margin-left: 50%;
+  width: 36rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  transform: translate(-50%);
+}
 .mainInfo__additionalInfoParagraph {
   margin-top: 1rem;
   font-size: 1.2rem;
 }
-
-.resultView__feelLikeTempBox {
-  transform: translate(-0.5rem);
-}
 .mainInfo__additionalInfoIcon {
   width: 7rem;
 }
-.dailyForecast {
+.mainInfo__additionalResultBox {
+  width: 10rem;
+  text-align: center;
+}
+
+.mainInfo__feelLikeTempBox {
+  transform: translate(-0.5rem);
+}
+.dailyForecastContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.forecastChartsContainer {
+  display: flex;
+  align-items: flex-end;
+  overflow: scroll;
+}
+.forecastChartsContainer__day {
+  margin: 2rem auto;
+  width: 36rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-.resultView__dailyForecast {
+.forecastChartsContainer__iconAndDay {
+  width: 15rem;
+  justify-content: space-between;
+  align-self: flex-end;
+  align-items: center;
+}
+.forecastChartsContainer__forecastDayIcon {
+  width: 100%;
+}
+
+.forecastChartsContainer__singleChartContainer {
+  width: 100%;
+  height: 22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.forecastChartsContainer__chart {
+  margin: 0 1.5rem;
+  width: 1.5rem;
+  height: 0;
+  background-color: orange;
+  border-radius: 10px 10px 0 0;
+  transition-duration: 1s;
+}
+.forecastChartsContainer__hourInfo {
+  color: salmon;
+}
+.forecastChartsContainer__avarageTemp {
+  width: 7rem;
+  font-size: 1.1rem;
+}
+
+.dailyForecastContainer__dailyForecast {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.mainInfo__h3 {
-  font-size: 4rem;
-  text-align: center;
-}
-.resultView__forecastButton {
+
+.dailyForecastContainer__forecastButton {
   margin-top: 2rem;
   width: 18rem;
   padding: 1rem 0;
@@ -197,29 +199,6 @@ html {
   border-radius: 1rem;
   color: white;
   background: transparent;
-}
-
-.resultView__temperatureChart {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  font-size: 0.85rem;
-  text-align: center;
-}
-
-.mainInfo__additionalResultBox {
-  width: 10rem;
-  text-align: center;
-}
-.resultView__hourInfo {
-  color: salmon;
-  transition-duration: 2s;
-}
-.resultView__tempInfo {
-  margin-bottom: 0.5rem;
-  width: 114%;
-  font-size: 1.1rem;
-  text-align: center;
 }
 
 .resultView__button {
@@ -232,6 +211,9 @@ html {
   background: transparent;
 }
 .footer__container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
   padding: 0.5rem;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.7);

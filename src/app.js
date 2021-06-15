@@ -1,8 +1,8 @@
 import { Common } from "/src/Common.js";
 import { UserInput } from "/src/UserInput.js";
-import { BackButton } from "/src/backButton.js";
-import { ForecastButton } from "/src/inputQueryForecast.js";
-import { Geolocalization } from "/src/geolocalization.js";
+import { SwitchViewButton } from "/src/switchViewButton.js";
+import { GetForecastButton } from "/src/getForecastButton.js";
+import { GeolocalizationButton } from "/src/geolocalizationButton.js";
 
 class WeatherApp extends Common {
   constructor() {
@@ -10,13 +10,13 @@ class WeatherApp extends Common {
     this.domElements = this.createDOMObject(); //this is object that contains all DOM elements that  contains data-jslink attribute -- easy to accress in code
     this.setBackgroundImage();
     new UserInput(this.domElements["buttonSubmit"]);
-    new BackButton(
+    new SwitchViewButton(
       this.domElements["backToSearchViewButton"],
       this.domElements["modalView"],
       this.domElements["inputView"]
     );
-    new ForecastButton(this.domElements["getForecastButton"]);
-    new Geolocalization(this.domElements["buttonGeolocation"]);
+    new GetForecastButton(this.domElements["getForecastButton"]);
+    new GeolocalizationButton(this.domElements["useGeolocationButton"]);
   }
 }
 
