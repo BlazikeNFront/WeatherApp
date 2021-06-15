@@ -240,7 +240,6 @@ export class APICall extends Common {
 
   createForecastWeatherInfo(data) {
     this.domElements["dailyForecastModule"].innerHTML = "";
-
     data.forecast.forecastday.map((day) => {
       new DailyForecast(this.domElements["dailyForecastModule"], day);
     });

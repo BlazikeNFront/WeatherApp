@@ -1,42 +1,24 @@
 .weatherApp {
-  height: 100%;
-}
-
-.inputView {
-  min-width: 60rem;
-}
-
-.resultView {
-  width: 100%;
-}
-.resultView__h3 {
-  margin-top: 2rem;
-}
-.resultView__icon {
-  width: 9rem;
-}
-.resultView__day {
   width: 75rem;
-  height: 100%;
 }
-.resultView__iconAndDay {
-  padding: 0;
+.resultView {
+  width: 72rem;
 }
-.resultView__temperatureChartContainer {
-  width: 63rem;
-  height: 18rem;
-  overflow: initial;
+.mainInfo__additionalInfomations {
+  width: 60rem;
 }
-.resultView__avarageTemp {
-  width: 7rem;
-  height: 9rem;
-  display: flex;
-  align-items: flex-end;
+.mainInfo__additionalInfoParagraph {
+  font-size: 1.5rem;
 }
-.resultView__button {
-  margin-top: 3rem;
+.forecastChartsContainer__day {
+  width: 72rem;
 }
-.footer__container {
-  margin-left: 86%;
-  position: fixed;
+.forecastChartsContainer__iconAndDay {
+  width: 11rem;
+}
+.forecastChartsContainer__forecastDayIcon {
+  width: 8rem;
+}
+.forecastChartsContainer__forecastDayText {
+  font-size: 1.5rem;
 }

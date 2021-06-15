@@ -14,8 +14,8 @@
 
 <body>
   <div class="weatherApp">
-    <header class='weatherApp__header'>
-      <h1 class='weatherApp__h1'>Weather Checker</h1>
+    <header class='header'>
+      <h1 class='header__h1'>Weather Checker</h1>
     </header>
     <main class='main'>
       <div class="inputView" data-jsLink="weatherInfo">
@@ -36,7 +36,7 @@
           <p class="inputView__errorMsg" data-jsLink='inputErrorMsg'></p>
           <button class='inputView__button' type='submit' data-jsLink='buttonSubmit'>Check Weather ! </button>
           <p class='inputView__label'> or use geolocation</p>
-          <button class='inputView__button' type='button' data-jsLink='buttonGeolocation'> Geolocation </button>
+          <button class='inputView__button' type='button' data-jsLink='useGeolocationButton'> Geolocation </button>
         </form>
         </h2>
         <div class="resultView hidden" data-jsLink='modalView'>
@@ -48,8 +48,8 @@
           </div>
           <div class="mainInfo__additionalInfomations" data-jsLink='additionalInformationBox'>
           </div>
-          <div class='dailyForecast'>
-            <button class="resultView__forecastButton" data-jsLink="getForecastButton">Get forecast for 3 days
+          <div class='dailyForecastContainer'>
+            <button class="resultView__button" data-jsLink="getForecastButton">Get forecast for 3 days
               !</button>
             <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
           </div>
@@ -59,7 +59,6 @@
       </div>
     </main>
   </div>
-
   <footer class='footer'>
     <div class="footer__container">
       <p class='footer__p'>Powered by <a class='footer__a' href="https://www.weatherapi.com/"

@@ -41,8 +41,7 @@ export class MainCardInfo extends Common {
 
   feelLikeTemperature(DOMElement) {
     const div = document.createElement("div");
-    div.classList.add("resultView__resultBox");
-    div.classList.add("resultView__feelLikeTempBox");
+    div.classList.add("mainInfo__additionalResultBox");
 
     const icon = document.createElement("img");
     icon.classList.add("mainInfo__additionalInfoIcon");

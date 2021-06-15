@@ -16,75 +16,9 @@ export class DailyForecast extends Common {
       6: "Saturday",
     };
 
-    this.createBox(this.domParent);
+    this.createForecastDisplayForDay(this.domParent);
   }
-  createBox(DOMElement) {
-    const box = document.createElement("div");
-    box.classList.add("resultView__day");
-
-    const iconAndDayBox = document.createElement("div");
-    iconAndDayBox.classList.add("resultView__iconAndDay");
-
-    const icon = document.createElement("img");
-    icon.classList.add("resultView__forecastDayIcon");
-    icon.src = "#";
-    icon.alt = "Weather Icon";
-
-    const arrayFromLink = this.data["day"]["condition"]["icon"].split("");
-    const iconNumber = arrayFromLink
-      .slice(arrayFromLink.length - 7, arrayFromLink.length - 4)
-      .join("");
-
-    const day = document.createElement("p");
-
-    iconAndDayBox.appendChild(icon);
-    iconAndDayBox.appendChild(day);
-
-    const temperetureChartBoxContainer = document.createElement("div");
-    temperetureChartBoxContainer.classList.add(
-      "resultView__temperatureChartContainer"
-    );
-
-    const averageTemperatureText = document.createElement("p");
-    averageTemperatureText.classList.add("resultView__chartTemperature");
-
-    averageTemperatureText.classList.add("resultView__avarageTemp");
-
-    box.appendChild(iconAndDayBox);
-    box.appendChild(temperetureChartBoxContainer);
-    box.appendChild(averageTemperatureText);
-
-    day.textContent =
-      this.days[Math.floor(this.data["date_epoch"] / 86400 + 4) % 7];
-
-    if (day.textContent === "Wednesday") {
-      iconAndDayBox.style.paddingLeft = "0";
-    }
-
-    iconAndDayBox["children"][0].src = `icons/day/${iconNumber}.png`;
-    averageTemperatureText.textContent = `Average temperature ${this.data["day"]["avgtemp_c"]}°C`;
-
-    const widthOfScreen = window.innerWidth;
-
-    if (widthOfScreen >= 768) {
-      if (this.data["day"]["avgtemp_c"] < -10) {
-        temperetureChartBoxContainer.style.transform = "translate(0, -7rem)";
-      } else if (this.data["day"]["avgtemp_c"] < -7) {
-        temperetureChartBoxContainer.style.transform = "translate(0, -4.5rem)";
-      } else if (this.data["day"]["avgtemp_c"] < -3) {
-        temperetureChartBoxContainer.style.transform = "translate(0, -3.5rem)";
-      }
-    }
-
-    if (this.data["day"]["avgtemp_c"] > -40) {
-      setTimeout(() => {
-        temperetureChartBoxContainer.scrollTo({
-          left: 0,
-          top: 100,
-        });
-      }, 100);
-    }
-    //code below scales chart depenending on temperature values (higher temp === bigger scale down), without scaling chart looks weird on high values
+  createChartForDay(chartData, DOMElement) {
     let chartHeightMulitplier = 2;
     const rawTemperatureChartHeight = Math.abs(this.data["day"]["avgtemp_c"]);
     if (rawTemperatureChartHeight > 10) {
@@ -94,6 +28,94 @@ export class DailyForecast extends Common {
     } else if (rawTemperatureChartHeight > 30) {
       chartHeightMulitplier = 3;
     }
+    chartData.map((hour) => {
+      const boxForChart = document.createElement("div");
+      boxForChart.classList.add(
+        "forecastChartsContainer__singleChartContainer"
+      );
+
+      const chart = document.createElement("div");
+      const tempInfo = document.createElement("p");
+      const hourText = document.createElement("p");
+
+      hourText.classList.add("forecastChartsContainer__hourInfo");
+      hourText.textContent = hour.time.split(" ")[1];
+
+      chart.classList.add("forecastChartsContainer__chart");
+
+      tempInfo.classList.add("forecastChartsContainer__tempInfo");
+
+      let temperatureChartHeight = hour["temp_c"];
+
+      const chartHeight = Math.abs(
+        temperatureChartHeight / chartHeightMulitplier
+      );
+      chartHeight < 7
+        ? (boxForChart.style.height = `10rem`)
+        : (boxForChart.style.height = `${chartHeight + 3}rem`);
+      if (temperatureChartHeight >= 0) {
+        tempInfo.textContent = `${temperatureChartHeight.toFixed(1)}°C`;
+
+        boxForChart.appendChild(tempInfo);
+        boxForChart.appendChild(chart);
+        boxForChart.appendChild(hourText);
+      } else {
+        temperatureChartHeight = Math.abs(temperatureChartHeight);
+        boxForChart.style.transform = `translateY(${chartHeight + 1}rem)`;
+        chart.style.backgroundColor = "#37ede4";
+        chart.style.borderRadius = "0 0 10px 10px";
+        tempInfo.textContent = `-${temperatureChartHeight.toFixed(1)}°C`;
+        boxForChart.appendChild(hourText);
+        boxForChart.appendChild(chart);
+        boxForChart.appendChild(tempInfo);
+      }
+      setTimeout(() => {
+        chart.style.height = `${chartHeight}rem`;
+      }, 100);
+      DOMElement.appendChild(boxForChart);
+    });
+  }
+  createForecastDisplayForDay(DOMElement) {
+    const box = document.createElement("div");
+    box.classList.add("forecastChartsContainer__day");
+
+    //resultView__iconAndDay
+    //resultView__iconAndDay
+    //resultView__iconAndDay
+    const iconAndDayBox = document.createElement("div");
+    iconAndDayBox.classList.add("forecastChartsContainer__iconAndDay");
+
+    const weatherIcon = document.createElement("img");
+    weatherIcon.classList.add("forecastChartsContainer__forecastDayIcon");
+
+    weatherIcon.alt = "Weather Icon";
+
+    const iconInformationSplittedArrayLength =
+      this.data["day"]["condition"]["icon"].split("").length;
+
+    const iconNumber = this.data["day"]["condition"]["icon"]
+      .split("")
+      .slice(
+        iconInformationSplittedArrayLength - 7,
+        iconInformationSplittedArrayLength - 4
+      )
+      .join("");
+    weatherIcon.src = `icons/day/${iconNumber}.png`;
+
+    iconAndDayBox.appendChild(weatherIcon);
+
+    const dayInformation = document.createElement("p");
+    dayInformation.classList.add("forecastChartsContainer__forecastDayText");
+    dayInformation.textContent =
+      this.days[Math.floor(this.data["date_epoch"] / 86400 + 4) % 7];
+
+    iconAndDayBox.appendChild(dayInformation);
+
+    //chart
+    //chart
+    //chart
+    const temperetureChartBoxContainer = document.createElement("div");
+    temperetureChartBoxContainer.classList.add("forecastChartsContainer");
     const evenHours = this.data["hour"].filter((hour, index) => {
       if (index % 2 === 0) {
         return true;
@@ -101,61 +123,22 @@ export class DailyForecast extends Common {
       return false;
     });
 
-    evenHours.map((hour) => {
-      const boxForChart = document.createElement("div");
-      boxForChart.classList.add("singleChartContainer");
+    this.createChartForDay(evenHours, temperetureChartBoxContainer);
 
-      const chart = document.createElement("div");
-      const tempInfo = document.createElement("p");
-      const hourText = document.createElement("p");
-      hourText.classList.add("resultView__hourInfo");
-      tempInfo.classList.add("resultView__tempInfo");
+    //averageTempInfo
+    //averageTempInfo
+    //averageTempInfo
+    const averageTemperatureText = document.createElement("p");
+    averageTemperatureText.classList.add(
+      "forecastChartsContainer__avarageTemp"
+    );
+    averageTemperatureText.textContent = `Average temperature ${this.data["day"]["avgtemp_c"]}°C`;
 
-      let temperatureChartHeight = hour["temp_c"]; // this constant is widely used in this map function , not only as temperatur chart height attribute
+    box.appendChild(iconAndDayBox);
+    box.appendChild(temperetureChartBoxContainer);
+    box.appendChild(averageTemperatureText);
 
-      if (temperatureChartHeight >= 0) {
-        setTimeout(() => {
-          hourText.style.transform = `rotate(-90deg) translate(-1rem)`;
-        }, 100);
-        tempInfo.textContent = `${temperatureChartHeight.toFixed(1)}°C`;
-      }
-
-      chart.classList.add("resultView__chart");
-
-      if (temperatureChartHeight < 0) {
-        temperatureChartHeight = Math.abs(temperatureChartHeight);
-        chart.style.transform = `translate(0,${
-          temperatureChartHeight / chartHeightMulitplier
-        }rem`;
-
-        chart.style.backgroundColor = "#37ede4";
-        chart.style.borderRadius = "0 0 10px 10px";
-        chart.classList.add("below-0-chartAnimation");
-        setTimeout(() => {
-          hourText.style.transform = `rotate(-90deg)`;
-        }, 100);
-        tempInfo.textContent = `-${temperatureChartHeight.toFixed(1)}°C`;
-      }
-
-      chart.style.height = 0;
-      chart.style.transition = "2s";
-      const chartHeight = temperatureChartHeight / chartHeightMulitplier;
-      //set wrapper height to the highest chart value
-      chartHeight < 7
-        ? (boxForChart.style.height = `10rem`)
-        : (boxForChart.style.height = `${chartHeight + 3}rem`);
-
-      setTimeout(() => {
-        chart.style.height = `${chartHeight}rem`;
-      }, 100);
-      hourText.textContent = hour.time.split(" ")[1];
-
-      boxForChart.appendChild(tempInfo);
-      boxForChart.appendChild(chart);
-      boxForChart.appendChild(hourText);
-
-      temperetureChartBoxContainer.appendChild(boxForChart);
-    });
+    //code below scales chart depenending on temperature values (higher temp === bigger scale down), without scaling chart looks weird on high values
 
     DOMElement.appendChild(box);
   }

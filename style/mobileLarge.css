@@ -1,22 +1,9 @@
-h3 {
-  font-size: 3rem;
+.weatherApp {
+  width: 40rem;
 }
-
-.inputView__input {
-  margin: 0.5rem 2rem;
-  font-size: 2rem;
+.mainInfo__additionalInfomations {
+  width: 39rem;
 }
-
-.resultView__additionalInfomations {
-  margin-left: 50%;
-  width: 85%;
-  transform: translate(-50%);
-}
-
-.footer__container {
-  margin-left: 82%;
-}
-
-.footer__container img {
-  width: 5rem;
+.forecastChartsContainer__day {
+  width: 39rem;
 }

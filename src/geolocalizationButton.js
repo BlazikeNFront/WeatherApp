@@ -1,7 +1,7 @@
 import { APICall } from "/src/APICall.js";
 import { Common } from "/src/Common.js";
 
-export class Geolocalization extends Common {
+export class GeolocalizationButton extends Common {
   constructor(button) {
     super();
     this.button = this.button;
