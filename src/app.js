@@ -7,7 +7,7 @@ import { GeolocalizationButton } from "/src/geolocalizationButton.js";
 class WeatherApp extends Common {
   constructor() {
     super();
-    this.domElements = this.createDOMObject(); //this is object that contains all DOM elements that  contains data-jslink attribute -- easy to accress in code
+    this.domElements = this.createDOMObject(); //this is object that contains all DOM elements that  contains data-jslink attribute -- easy to access in code
     this.setBackgroundImage();
     new UserInput(this.domElements["buttonSubmit"]);
     new SwitchViewButton(
