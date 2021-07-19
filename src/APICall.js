@@ -40,7 +40,7 @@ export class APICall extends Common {
     }
 
     fetch(
-      `http://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=${inputValue}&days=3`
+      `https://api.weatherapi.com/v1/forecast.json?key=${APIKey}&q=${inputValue}&days=3`
     )
       .then((data) => {
         if (data.ok) {
@@ -55,8 +55,6 @@ export class APICall extends Common {
   }
 
   currentWeatherCall(locationInput) {
-    this.loader();
-
     if (!this.checkIfNeedsUpdate("currentWeather", locationInput.value)) {
       const data = JSON.parse(localStorage.getItem("currentWeather"));
       this.createCurrentWeatherInfo(data, locationInput);
@@ -64,20 +62,19 @@ export class APICall extends Common {
     }
     this.domElements["additionalInformationBox"].innerHTML = "";
     this.fetchDataFromAPI(
-      `http://api.weatherapi.com/v1/current.json?key=${APIKey}&q`,
+      `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q`,
       locationInput
     );
     locationInput.value = "";
   }
 
   geolocationCall() {
-    this.loader();
     navigator.geolocation.getCurrentPosition((coordinates) => {
       const latitude = coordinates.coords.latitude;
       const longitude = coordinates.coords.longitude;
       this.domElements["additionalInformationBox"].innerHTML = "";
       this.fetchDataFromAPI(
-        `http://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${
+        `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${
           latitude + "," + longitude
         }`
       );
@@ -91,7 +88,7 @@ export class APICall extends Common {
     } else {
       fetchUrl = url;
     }
-
+    this.loader();
     fetch(fetchUrl)
       .then((data) => {
         if (data.ok) {

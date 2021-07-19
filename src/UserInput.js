@@ -11,7 +11,12 @@ export class UserInput extends Common {
   inputEventListener(element) {
     element.addEventListener("click", (event) => {
       event.preventDefault();
+      this.clearMainViewErrors();
       new APICall(this.domElements["input"], "current");
     });
+  }
+  clearMainViewErrors() {
+    this.domElements["inputErrorMsg"].textContent = "";
+    this.domElements["geolocationError"].textContent = "";
   }
 }

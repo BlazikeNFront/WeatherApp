@@ -6,6 +6,7 @@
 *::before {
   margin: 0;
   padding: 0;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   font-family: var(--main-font);
 }
@@ -33,19 +34,38 @@ html {
 }
 .main {
   margin-top: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .inputView {
   margin-bottom: 2rem;
   border-radius: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
   text-align: center;
+  -webkit-transition: all 1s ease-out;
+  -o-transition: all 1s ease-out;
   transition: all 1s ease-out;
   overflow: hidden;
 }
@@ -53,15 +73,20 @@ html {
   width: 27rem;
   height: 5rem;
   border: 3px solid black;
-  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
   font-size: 2rem;
   font-family: inherit;
   text-align: center;
 }
 
 .inputView__userInputContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
 }
 .inputView__label {
@@ -71,6 +96,8 @@ html {
 }
 
 .inputView__errorMsg {
+  margin-top: 1rem;
+  font-size: 1.5rem;
   font-family: var(--main-font);
   color: red;
 }
@@ -84,6 +111,7 @@ html {
   font-family: var(--main-font);
   font-size: 2rem;
   color: white;
+  cursor: pointer;
 }
 
 .resultView {
@@ -91,8 +119,15 @@ html {
 }
 
 .mainInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .mainInfo__h3 {
@@ -112,9 +147,16 @@ html {
   margin-top: 2rem;
   margin-left: 50%;
   width: 36rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-pack: distribute;
   justify-content: space-around;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
   transform: translate(-50%);
 }
 .mainInfo__additionalInfoParagraph {
@@ -130,30 +172,54 @@ html {
 }
 
 .mainInfo__feelLikeTempBox {
+  -webkit-transform: translate(-0.5rem);
+  -ms-transform: translate(-0.5rem);
   transform: translate(-0.5rem);
 }
 .dailyForecastContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .forecastChartsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
   overflow: scroll;
 }
 .forecastChartsContainer__day {
   margin: 2rem auto;
   width: 36rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .forecastChartsContainer__iconAndDay {
   width: 15rem;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -ms-flex-item-align: end;
   align-self: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .forecastChartsContainer__forecastDayIcon {
@@ -163,9 +229,18 @@ html {
 .forecastChartsContainer__singleChartContainer {
   width: 100%;
   height: 22rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .forecastChartsContainer__chart {
@@ -174,6 +249,8 @@ html {
   height: 0;
   background-color: orange;
   border-radius: 10px 10px 0 0;
+  -webkit-transition-duration: 1s;
+  -o-transition-duration: 1s;
   transition-duration: 1s;
 }
 .forecastChartsContainer__hourInfo {
@@ -186,29 +263,37 @@ html {
 
 .dailyForecastContainer__dailyForecast {
   margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
 .dailyForecastContainer__forecastButton {
   margin-top: 2rem;
-  width: 18rem;
   padding: 1rem 0;
+  width: 18rem;
   border: 3px solid white;
   border-radius: 1rem;
-  color: white;
   background: transparent;
+  color: white;
 }
 
 .resultView__button {
   margin-top: 8rem;
-  width: 18rem;
   padding: 1rem 0;
-  color: white;
+  width: 18rem;
   border: 3px solid white;
   border-radius: 1rem;
   background: transparent;
+  color: white;
+  cursor: pointer;
 }
 .footer__container {
   position: fixed;
@@ -217,7 +302,11 @@ html {
   padding: 0.5rem;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.7);
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 
@@ -239,10 +328,15 @@ footer p {
   left: 21.1rem;
   width: 80px;
   height: 80px;
+  -webkit-transform: scale(0.5);
+  -ms-transform: scale(0.5);
   transform: scale(0.5);
 }
 .inputView__loaderElement {
+  -webkit-animation: loaderAnimation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   animation: loaderAnimation 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  -webkit-transform-origin: 40px 40px;
+  -ms-transform-origin: 40px 40px;
   transform-origin: 40px 40px;
 }
 
@@ -257,6 +351,7 @@ footer p {
   background: white;
 }
 .inputView__loaderElement:nth-child(1) {
+  -webkit-animation-delay: -0.036s;
   animation-delay: -0.036s;
 }
 .inputView__loaderElement:nth-child(1):after {
@@ -264,6 +359,7 @@ footer p {
   left: 63px;
 }
 .inputView__loaderElement:nth-child(2) {
+  -webkit-animation-delay: -0.072s;
   animation-delay: -0.072s;
 }
 .inputView__loaderElement:nth-child(2):after {
@@ -271,6 +367,7 @@ footer p {
   left: 56px;
 }
 .inputView__loaderElement:nth-child(3) {
+  -webkit-animation-delay: -0.108s;
   animation-delay: -0.108s;
 }
 .inputView__loaderElement:nth-child(3):after {
@@ -278,6 +375,7 @@ footer p {
   left: 48px;
 }
 .inputView__loaderElement:nth-child(4) {
+  -webkit-animation-delay: -0.144s;
   animation-delay: -0.144s;
 }
 .inputView__loaderElement:nth-child(4):after {
@@ -285,6 +383,7 @@ footer p {
   left: 40px;
 }
 .inputView__loaderElement:nth-child(5) {
+  -webkit-animation-delay: -0.18s;
   animation-delay: -0.18s;
 }
 .inputView__loaderElement:nth-child(5):after {
@@ -292,6 +391,7 @@ footer p {
   left: 32px;
 }
 .inputView__loaderElement:nth-child(6) {
+  -webkit-animation-delay: -0.216s;
   animation-delay: -0.216s;
 }
 .inputView__loaderElement:nth-child(6):after {
@@ -299,6 +399,7 @@ footer p {
   left: 24px;
 }
 .inputView__loaderElement:nth-child(7) {
+  -webkit-animation-delay: -0.252s;
   animation-delay: -0.252s;
 }
 .inputView__loaderElement:nth-child(7):after {
@@ -306,6 +407,7 @@ footer p {
   left: 17px;
 }
 .inputView__loaderElement:nth-child(8) {
+  -webkit-animation-delay: -0.288s;
   animation-delay: -0.288s;
 }
 
@@ -313,11 +415,24 @@ footer p {
   display: none;
 }
 
-@keyframes loaderAnimation {
+@-webkit-keyframes loaderAnimation {
   0% {
+    -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
   }
   100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loaderAnimation {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
     transform: rotate(360deg);
   }
 }
