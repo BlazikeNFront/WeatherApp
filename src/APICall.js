@@ -30,6 +30,14 @@ export class APICall extends Common {
       loader.style.display = "none";
     }
   }
+  geoloader() {
+    const loader = this.domElements["geoLoader"];
+    if (loader.style.display === "" || loader.style.display === "none") {
+      loader.style.display = "block";
+    } else {
+      loader.style.display = "none";
+    }
+  }
 
   forecastCall(inputValue) {
     //Free API users are able to get forcast for maximuim 3 days...
@@ -51,6 +59,9 @@ export class APICall extends Common {
       })
       .then((data) => {
         this.createForecastWeatherInfo(data);
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
@@ -69,26 +80,39 @@ export class APICall extends Common {
   }
 
   geolocationCall() {
-    navigator.geolocation.getCurrentPosition((coordinates) => {
-      const latitude = coordinates.coords.latitude;
-      const longitude = coordinates.coords.longitude;
-      this.domElements["additionalInformationBox"].innerHTML = "";
-      this.fetchDataFromAPI(
-        `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${
-          latitude + "," + longitude
-        }`
-      );
-    });
+    window.navigator.geolocation.getCurrentPosition(
+      (coordinates) => {
+        const latitude = coordinates.coords.latitude;
+        const longitude = coordinates.coords.longitude;
+        this.domElements["additionalInformationBox"].innerHTML = "";
+        this.fetchDataFromAPI(
+          `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${
+            latitude + "," + longitude
+          }`
+        );
+        this.domElements["useGeolocationButton"].disabled = false;
+        this.geoloader();
+      },
+      (error) => {
+        alert(error.code + ": " + error.message);
+        this.geoloader();
+        this.domElements["useGeolocationButton"].disabled = false;
+        this.domElements["geolocationError"].textContent =
+          "Geolocalization not avalible - check functionality on desktop";
+        this.domElements["geoLoader"].style.display = "none";
+      }
+    );
   }
 
   fetchDataFromAPI(url, input) {
     let fetchUrl;
+    this.domElements["mainInfoIcon"];
     if (input) {
       fetchUrl = `${url}=${input.value}`;
     } else {
       fetchUrl = url;
     }
-    this.loader();
+
     fetch(fetchUrl)
       .then((data) => {
         if (data.ok) {
@@ -141,15 +165,16 @@ export class APICall extends Common {
         localStorage.setItem("currentWeather", JSON.stringify(data));
 
         this.domElements["inputErrorMsg"].textContent = "";
-        this.loader();
+
         this.switchView(
           this.domElements["inputView"],
           this.domElements["modalView"]
         );
+        this.domElements["mainLoader"].style.display = "none";
       })
       .catch((error) => {
         console.log(error);
-        this.loader();
+        this.domElements["mainLoader"].style.display = "none";
         this.domElements["inputErrorMsg"].textContent = "Wrong city!";
       });
   }

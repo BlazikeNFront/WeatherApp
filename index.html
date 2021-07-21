@@ -20,19 +20,26 @@
     </header>
     <main class='main'>
       <div class="inputView" data-jsLink="weatherInfo">
-        <div class="inputView__loader" data-jsLink="mainLoader">
-          <div class="inputView__loaderElement"></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
         <form class="inputView__inputBox" data-jsLink='inputView'>
           <div class='inputView__userInputContainer'>
             <label class='inputView__label' for='cityInput'>Type your city</label>
             <input class='inputView__input' id='cityInput' data-jsLink='input'>
+            <div class="inputView__loader" data-jsLink='mainLoader'>
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
           </div>
           <p class="inputView__errorMsg" data-jsLink='inputErrorMsg'></p>
           <button class='inputView__button' type='submit' data-jsLink='buttonSubmit'>Check Weather ! </button>
@@ -40,10 +47,25 @@
           <div class='inputView__geolocationContainer'>
             <button class='inputView__button' type='button' data-jsLink='useGeolocationButton'> Geolocation </button>
             <p class="inputView__errorMsg" data-jsLink='geolocationError'></p>
+            <div class="inputView__geoLoader" data-jsLink='geoLoader'>
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
           </div>
       </div>
       </form>
-      </h2>
       <div class="resultView hidden" data-jsLink='modalView'>
         <div class="mainInfo">
           <h3 class='mainInfo__h3' data-jsLink='cityName'></h3>
@@ -58,9 +80,10 @@
             !</button>
           <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
         </div>
-        <button class="resultView__button" data-jsLink="backToSearchViewButton"> Check in another city !
+        <button class="resultView__backToMainViewButton" data-jsLink="backToSearchViewButton"> Check in another city !
         </button>
       </div>
+  </div>
   </div>
   </main>
   </div>
@@ -71,7 +94,7 @@
       <img src='images\weatherapi_logo.png' alt='weatherAPI logo'>
     </div>
   </footer>
-  <script src='src/index.js' type='module' defer></script>
 </body>
+<script src='src/index.js' type='module' defer></script>
 
 </html>

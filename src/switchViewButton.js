@@ -8,13 +8,16 @@ export class SwitchViewButton extends Common {
     this.nextView = nextView;
     this.buttonEventListener();
   }
-
+  hideForecastModule() {
+    this.domElements["geoLoader"].style.display = "none";
+    this.domElements["dailyForecastModule"].classList.add("hidden");
+    this.domElements["getForecastButton"].textContent =
+      "Get forecast for 3 days !";
+  }
   buttonEventListener() {
     this.button.addEventListener("click", () => {
       this.switchView(this.currentView, this.nextView);
-      this.changeVisibility(this.domElements["dailyForecastModule"]);
-      this.domElements["getForecastButton"].textContent =
-        "Get forecast for 3 days !";
+      this.hideForecastModule();
     });
   }
 }

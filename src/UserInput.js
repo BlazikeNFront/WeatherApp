@@ -10,6 +10,7 @@ export class UserInput extends Common {
 
   inputEventListener(element) {
     element.addEventListener("click", (event) => {
+      this.domElements["mainLoader"].style.display = "block";
       event.preventDefault();
       this.clearMainViewErrors();
       new APICall(this.domElements["input"], "current");

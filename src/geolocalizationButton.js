@@ -7,13 +7,16 @@ export class GeolocalizationButton extends Common {
     this.button = this.button;
     this.eventListener(button);
   }
+
   eventListener(button) {
     button.addEventListener("click", () => {
       this.clearMainViewErrors();
-      if ("geolocation" in navigator) {
+      if ("geolocation" in window.navigator) {
+        button.disabled = true;
+
         new APICall(null, "geolocation");
       } else {
-        this.domElements["geolocation__error"].textContent =
+        this.domElements["geolocationError"].textContent =
           "Geolocalization not avalible";
       }
     });
