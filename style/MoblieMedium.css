@@ -69,6 +69,7 @@ html {
   transition: all 1s ease-out;
 }
 .inputView__input {
+  margin: 0 auto;
   width: 27rem;
   height: 5rem;
   border: 3px solid black;

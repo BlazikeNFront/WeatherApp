@@ -123,6 +123,15 @@ export class APICall extends Common {
         if (input) {
           input.value = "";
         }
+        if (!data.current.condition) {
+          this.domElements["mainLoader"].style.display = "none";
+          this.domElements["geoLoader"].style.display = "none";
+          this.domElements["inputErrorMsg"].textContent =
+            "API doesnot information about that location, type diffrent location";
+          return;
+        }
+
+        console.log(data.current);
         const arrayFromLink = data["current"]["condition"]["icon"].split("");
         const iconNumber = arrayFromLink
           .slice(arrayFromLink.length - 7, arrayFromLink.length - 4)
