@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Check current weather and get forecast for 3 days !" />
   <link href="/style/MoblieMedium.css" rel="stylesheet">
   <link href="/style/mobileLarge.css" rel="stylesheet" media="(min-width:376px)">
   <link href="/style/tablet.css" rel="stylesheet" media="(min-width:768px)">
@@ -19,45 +20,72 @@
     </header>
     <main class='main'>
       <div class="inputView" data-jsLink="weatherInfo">
-        <div class="inputView__loader" data-jsLink="mainLoader">
-          <div class="inputView__loaderElement"></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
         <form class="inputView__inputBox" data-jsLink='inputView'>
           <div class='inputView__userInputContainer'>
             <label class='inputView__label' for='cityInput'>Type your city</label>
             <input class='inputView__input' id='cityInput' data-jsLink='input'>
+            <div class="inputView__loader" data-jsLink='mainLoader'>
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
           </div>
           <p class="inputView__errorMsg" data-jsLink='inputErrorMsg'></p>
           <button class='inputView__button' type='submit' data-jsLink='buttonSubmit'>Check Weather ! </button>
           <p class='inputView__label'> or use geolocation</p>
-          <button class='inputView__button' type='button' data-jsLink='useGeolocationButton'> Geolocation </button>
-        </form>
-        </h2>
-        <div class="resultView hidden" data-jsLink='modalView'>
-          <div class="mainInfo">
-            <h3 class='mainInfo__h3' data-jsLink='cityName'></h3>
-            <p class="mainInfo__temperature" data-jsLink='mainInfoTemperature'></p>
-            <img class="mainInfo__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
-            <p class="mainInfo__iconText" data-jsLink='weatherIconText'></p>
+          <div class='inputView__geolocationContainer'>
+            <button class='inputView__button' type='button' data-jsLink='useGeolocationButton'> Geolocation </button>
+            <p class="inputView__errorMsg" data-jsLink='geolocationError'></p>
+            <div class="inputView__geoLoader" data-jsLink='geoLoader'>
+              <div class="lds-spinner">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+              </div>
+            </div>
           </div>
-          <div class="mainInfo__additionalInfomations" data-jsLink='additionalInformationBox'>
-          </div>
-          <div class='dailyForecastContainer'>
-            <button class="resultView__button" data-jsLink="getForecastButton">Get forecast for 3 days
-              !</button>
-            <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
-          </div>
-          <button class="resultView__button" data-jsLink="backToSearchViewButton"> Check in another city !
-          </button>
-        </div>
       </div>
-    </main>
+      </form>
+      <div class="resultView hidden" data-jsLink='modalView'>
+        <div class="mainInfo">
+          <h3 class='mainInfo__h3' data-jsLink='cityName'></h3>
+          <p class="mainInfo__temperature" data-jsLink='mainInfoTemperature'></p>
+          <img class="mainInfo__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
+          <p class="mainInfo__iconText" data-jsLink='weatherIconText'></p>
+        </div>
+        <div class="mainInfo__additionalInfomations" data-jsLink='additionalInformationBox'>
+        </div>
+        <div class='dailyForecastContainer'>
+          <button class="resultView__button" data-jsLink="getForecastButton">Get forecast for 3 days
+            !</button>
+          <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
+        </div>
+        <button class="resultView__backToMainViewButton" data-jsLink="backToSearchViewButton"> Check in another city !
+        </button>
+      </div>
+  </div>
+  </div>
+  </main>
   </div>
   <footer class='footer'>
     <div class="footer__container">
@@ -66,7 +94,7 @@
       <img src='images\weatherapi_logo.png' alt='weatherAPI logo'>
     </div>
   </footer>
-  <script src='src/app.js' type='module' defer></script>
 </body>
+<script src='src/index.js' type='module' defer></script>
 
 </html>
