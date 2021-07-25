@@ -23,7 +23,7 @@
         <form class="inputView__inputBox" data-jsLink='inputView'>
           <div class='inputView__userInputContainer'>
             <label class='inputView__label' for='cityInput'>Type your city</label>
-            <input class='inputView__input' id='cityInput' data-jsLink='input'>
+            <input class='inputView__input' id='cityInput' data-jsLink='input' data-cy='userInput'>
             <div class="inputView__loader" data-jsLink='mainLoader'>
               <div class="lds-spinner">
                 <div></div>
@@ -42,7 +42,8 @@
             </div>
           </div>
           <p class="inputView__errorMsg" data-jsLink='inputErrorMsg'></p>
-          <button class='inputView__button' type='submit' data-jsLink='buttonSubmit'>Check Weather ! </button>
+          <button class='inputView__button' type='submit' data-jsLink='buttonSubmit' data-cy='submitButton'>Check
+            Weather ! </button>
           <p class='inputView__label'> or use geolocation</p>
           <div class='inputView__geolocationContainer'>
             <button class='inputView__button' type='button' data-jsLink='useGeolocationButton'> Geolocation </button>
@@ -68,7 +69,7 @@
       </form>
       <div class="resultView hidden" data-jsLink='modalView'>
         <div class="mainInfo">
-          <h3 class='mainInfo__h3' data-jsLink='cityName'></h3>
+          <h3 class='mainInfo__h3' data-jsLink='cityName' data-cy="cityName"></h3>
           <p class="mainInfo__temperature" data-jsLink='mainInfoTemperature'></p>
           <img class="mainInfo__icon" src="#" alt='weather Icon' data-jsLink='mainInfoIcon'>
           <p class="mainInfo__iconText" data-jsLink='weatherIconText'></p>
@@ -76,12 +77,10 @@
         <div class="mainInfo__additionalInfomations" data-jsLink='additionalInformationBox'>
         </div>
         <div class='dailyForecastContainer'>
-          <button class="resultView__button" data-jsLink="getForecastButton">Get forecast for 3 days
-            !</button>
-          <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule"></div>
+          <button class="resultView__button" data-jsLink="getForecastButton" data-cy='getForecastButton'>Get forecast for 3 days!</button>
+          <div class="resultView__dailyForecast hidden" data-jsLink="dailyForecastModule" data-cy='dailyForecastModule'></div>
         </div>
-        <button class="resultView__backToMainViewButton" data-jsLink="backToSearchViewButton"> Check in another city !
-        </button>
+        <button class="resultView__backToMainViewButton" data-jsLink="backToSearchViewButton" data-cy='backToSearchViewButton'>Check in another city !</button>
       </div>
   </div>
   </div>

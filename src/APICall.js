@@ -131,7 +131,6 @@ export class APICall extends Common {
           return;
         }
 
-        console.log(data.current);
         const arrayFromLink = data["current"]["condition"]["icon"].split("");
         const iconNumber = arrayFromLink
           .slice(arrayFromLink.length - 7, arrayFromLink.length - 4)
