@@ -71,6 +71,7 @@ export class APICall extends Common {
       this.createCurrentWeatherInfo(data, locationInput);
       return;
     }
+
     this.domElements["additionalInformationBox"].innerHTML = "";
     this.fetchDataFromAPI(
       `https://api.weatherapi.com/v1/current.json?key=${APIKey}&q`,
